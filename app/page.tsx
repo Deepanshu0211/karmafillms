@@ -5,7 +5,6 @@ import Link from "next/link"
 import Image from "next/image"
 import type React from "react"
 import { useRef } from "react"
-import { useEffect, useState } from "react";
 
 const services = [
   {
@@ -21,14 +20,13 @@ const services = [
   {
     title: "Branding",
     description: "We develop cohesive brand identities that resonate with audiences.",
-    deliverables: ["graphic Desigining", "Visual Identity", "Brand Guidelines", "Marketing Materials"],
+    deliverables: ["Graphic Designing", "Visual Identity", "Brand Guidelines", "Marketing Materials"],
   },
   {
     title: "Video Editing",
     description: "We craft seamless video edits that captivate audiences and bring stories to life.",
-    deliverables: ["Short Form", "Long Form", "Motion Desging"],
+    deliverables: ["Short Form", "Long Form", "Motion Designing"],
   },
-  
 ]
 
 const team = [
@@ -93,30 +91,23 @@ function Section({ children }: { children: React.ReactNode }) {
 }
 
 export default function Home() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => setIsLoaded(true), 2000); // Delay loading for smooth experience
-  }, []);
-
-
   return (
     <main>
-      
-      
       <Section>
         <div className="container">
-        <div className="spline-container">
-        <iframe src="https://my.spline.design/liquidgradientabstractbackground-4a5898e5a6dcea8b7d9a3d38a27fcedf/"  className="spline-bg"
-         loading="lazy"
-          allow="fullscreen; xr-spatial-tracking; accelerometer"
-          style={{ willChange: "transform", pointerEvents: "none" }}></iframe>
-        </div>
+          <div className="spline-container">
+            <iframe 
+              src="https://my.spline.design/liquidgradientabstractbackground-4a5898e5a6dcea8b7d9a3d38a27fcedf/"
+              className="spline-bg"
+              loading="lazy"
+              allow="fullscreen; xr-spatial-tracking; accelerometer"
+              style={{ willChange: "transform", pointerEvents: "none" }}
+            ></iframe>
+          </div>
           <div className="hero">
             <AnimatedText className="hero-title">We craft digital experiences</AnimatedText>
             <AnimatedText className="hero-subtitle">
-              A creative studio focused on design, development, and branding. We help brands stand out in the digital
-              age.
+              A creative studio focused on design, development, and branding. We help brands stand out in the digital&nbsp;age.
             </AnimatedText>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -188,4 +179,3 @@ export default function Home() {
     </main>
   )
 }
-
