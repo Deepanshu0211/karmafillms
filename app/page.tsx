@@ -1,101 +1,191 @@
-import Image from "next/image";
+"use client"
+
+import { motion, useInView } from "framer-motion"
+import Link from "next/link"
+import Image from "next/image"
+import type React from "react"
+import { useRef } from "react"
+import { useEffect, useState } from "react";
+
+const services = [
+  {
+    title: "Digital Design",
+    description: "We create beautiful, intuitive interfaces that engage users.",
+    deliverables: ["UI/UX Design", "Design Systems", "Interactive Prototypes", "User Research"],
+  },
+  {
+    title: "Development",
+    description: "We build robust, scalable applications using modern technologies.",
+    deliverables: ["Web Applications", "Mobile Apps", "E-commerce", "CMS Development"],
+  },
+  {
+    title: "Branding",
+    description: "We develop cohesive brand identities that resonate with audiences.",
+    deliverables: ["graphic Desigining", "Visual Identity", "Brand Guidelines", "Marketing Materials"],
+  },
+  {
+    title: "Video Editing",
+    description: "We craft seamless video edits that captivate audiences and bring stories to life.",
+    deliverables: ["Short Form", "Long Form", "Motion Desging"],
+  },
+  
+]
+
+const team = [
+  {
+    name: "Alex Chen",
+    role: "Creative Director",
+    bio: "With over 10 years of experience in digital design and brand strategy.",
+    image: "/placeholder.svg?height=400&width=400",
+  },
+  {
+    name: "Sarah Miller",
+    role: "Lead Designer",
+    bio: "Specializing in user interface design and systems.",
+    image: "/placeholder.svg?height=400&width=400",
+  },
+  {
+    name: "James Wilson",
+    role: "Technical Lead",
+    bio: "Expert in modern web technologies and application architecture.",
+    image: "/placeholder.svg?height=400&width=400",
+  },
+  {
+    name: "Emma Davis",
+    role: "Strategy Director",
+    bio: "Focused on helping brands develop their digital presence.",
+    image: "/placeholder.svg?height=400&width=400",
+  },
+]
+
+function AnimatedText({ children, className }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.5 })
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+function Section({ children }: { children: React.ReactNode }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
+
+  return (
+    <motion.section
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.8 }}
+      className="section"
+    >
+      {children}
+    </motion.section>
+  )
+}
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isLoaded, setIsLoaded] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    setTimeout(() => setIsLoaded(true), 2000); // Delay loading for smooth experience
+  }, []);
+
+
+  return (
+    <main>
+      
+      
+      <Section>
+        <div className="container">
+        <div className="spline-container">
+        <iframe src="https://my.spline.design/liquidgradientabstractbackground-4a5898e5a6dcea8b7d9a3d38a27fcedf/"  className="spline-bg"
+         loading="lazy"
+          allow="fullscreen; xr-spatial-tracking; accelerometer"
+          style={{ willChange: "transform", pointerEvents: "none" }}></iframe>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+          <div className="hero">
+            <AnimatedText className="hero-title">We craft digital experiences</AnimatedText>
+            <AnimatedText className="hero-subtitle">
+              A creative studio focused on design, development, and branding. We help brands stand out in the digital
+              age.
+            </AnimatedText>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <Link href="/projects" className="btn">
+                View Projects
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      <Section>
+        <div className="container">
+          <AnimatedText className="section-title">Our Services</AnimatedText>
+          <div className="services">
+            {services.map((service, i) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="service-card"
+              >
+                <AnimatedText className="service-title">{service.title}</AnimatedText>
+                <AnimatedText className="service-description">{service.description}</AnimatedText>
+                <ul className="service-list">
+                  {service.deliverables.map((item) => (
+                    <AnimatedText key={item} className="service-list-item">
+                      • {item}
+                    </AnimatedText>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      <Section>
+        <div className="container">
+          <AnimatedText className="section-title">Our Team</AnimatedText>
+          <div className="team">
+            {team.map((member, i) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="team-member"
+              >
+                <Image
+                  src={member.image || "/placeholder.svg"}
+                  alt={member.name}
+                  width={400}
+                  height={400}
+                  className="team-member-image"
+                />
+                <AnimatedText className="team-member-name">{member.name}</AnimatedText>
+                <AnimatedText className="team-member-role">{member.role}</AnimatedText>
+                <AnimatedText className="team-member-bio">{member.bio}</AnimatedText>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </Section>
+    </main>
+  )
 }
+
