@@ -33,7 +33,7 @@ export default function About() {
             </AnimatedText>
             <AnimatedText>
               Our approach combines strategic thinking with creative execution. We believe that great design is not just
-              about aesthetics – it&apos;s about solving problems and creating meaningful experiences that resonate with
+              about aesthetics  it&apos;s about solving problems and creating meaningful experiences that resonate with
               users.
             </AnimatedText>
             <AnimatedText className="text-3xl text-white font-medium tracking-tight mt-16 mb-8">

@@ -45,7 +45,7 @@ export default function Contact() {
         >
           <AnimatedText className="section-title">Get in Touch</AnimatedText>
           <AnimatedText className="section-subtitle">
-            Let's discuss your project and see how we can help your business grow.
+            Let &apos; s discuss your project and see how we can help your business grow.
           </AnimatedText>
 
           <form onSubmit={handleSubmit} className="form">
