@@ -95,7 +95,7 @@ export default function Home() {
     <main>
       <Section>
         <div className="container">
-          <div className="spline-container">
+          {/* <div className="spline-container">
             <iframe 
               src="https://my.spline.design/liquidgradientabstractbackground-4a5898e5a6dcea8b7d9a3d38a27fcedf/"
               className="spline-bg"
@@ -103,7 +103,7 @@ export default function Home() {
               allow="fullscreen; xr-spatial-tracking; accelerometer"
               style={{ willChange: "transform", pointerEvents: "none" }}
             ></iframe>
-          </div>
+          </div> */}
           <div className="hero">
             <AnimatedText className="hero-title">We craft digital experiences</AnimatedText>
             <AnimatedText className="hero-subtitle">
