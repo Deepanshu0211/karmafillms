@@ -76,6 +76,7 @@ html {
 }
 
 body {
+  
   font-family: var(--font-gilroy);
   background-color: var(--background);
   color: var(--foreground);
@@ -238,25 +239,157 @@ h6 {
 }
 .spline-container {
   position: relative;
+  background: radial-gradient(circle, grey 0%, black 90%);
+  background-size: 100% 100%;
+
   border-radius: 15px;
   width: 80vw;
   height: 70vh;
   z-index: -99999; /* Keep it behind everything */
   overflow: hidden;
-  background: radial-gradient(circle, #2e1e1a, #3e1616, #600f0f, #1b1b1b);
-  background-size: 400% 400%;
-  animation: gradientShift 6s ease infinite;
+  /* background: url("https://media.discordapp.net/attachments/1121543910632722472/1345440147189010472/red-grainy-gradient-background-dark-noise-texture-2024-11-28-00-40-56-utc.jpg?ex=67c48e48&is=67c33cc8&hm=71f1d713669d6cabb59eca78fc12ce7ee65c0e16b8d28a259f1e291313e31586&=&format=webp&width=903&height=445");
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;  */
 }
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+
+
+/* Popup Overlay */
+.category-card{
+
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  top: 20px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  background: rgba(66, 65, 65, 0.74);
+  margin-bottom: 20px;
+  width: 100%;
+  height: auto; /* Prevents overlapping */
+  min-height: 150px; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999999;
+  font-family: var(--font-gilroy);
 }
-.spline-bg {
-  width: 88%;
-  height: 150%;
+.popup-overlay {
+  font-family: var(--font-gilroy);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup Card */
+.popup-card {
+  font-family: var(--font-gilroy);
+  background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 700px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.popup-title {
+  font-family: var(--font-gilroy);
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  background: rgb(0, 0, 0);
+  color: white;
   border: none;
- 
+  padding: 5px 10px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 40%;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background: rgb(39, 38, 38);
+}
+
+/* Project List */
+.projects-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Individual Project Card */
+.popup-project-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 280px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.popup-project-card:hover {
+  transform: translateY(-5px);
+}
+
+.popup-project-image {
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+}
+
+.popup-project-content {
+  margin-top: 10px;
+}
+
+.popup-project-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.popup-project-description {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.popup-project-link {
+  display: inline-block;
+  margin-top: 10px;
+  background: #000000;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.popup-project-link:hover {
+  background: #343835;
 }
 
 .hamburger,

@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-slot": "^1.1.2",
     "@react-three/drei": "^9.121.5",
     "@react-three/fiber": "^8.17.14",
     "@types/gsap": "^1.20.2",
