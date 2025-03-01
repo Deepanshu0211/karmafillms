@@ -239,8 +239,8 @@ h6 {
 }
 .spline-container {
   position: relative;
-  background: radial-gradient(circle, grey 0%, black 90%);
-  background-size: 100% 100%;
+  /* background: radial-gradient(circle, grey 0%, black 90%);
+  background-size: 100% 100%; */
 
   border-radius: 15px;
   width: 80vw;
@@ -688,11 +688,15 @@ h6 {
 @media (max-width: 768px) {
   .section {
     padding: 80px 0;
+    overflow-x: hidden;
   }
   .spline-container{
     display: relative;
     height: 80vh;
-    width: 102vw;
+    width: 106vw;
+    left: -20px;
+    background: radial-gradient(circle, grey 0%, black 90%);
+    background-size: 100% 100%;
   }
   frame{
     display: none;
