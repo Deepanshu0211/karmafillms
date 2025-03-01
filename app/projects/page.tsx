@@ -48,6 +48,20 @@ const projects = [
     category: "Design",
     link: "https://example.com/ecommerce-experience",
   },
+  {
+    title: "E-commerce Experience",
+    description: "Modern e-commerce platform with unique user experience",
+    image: "/placeholder.svg?height=600&width=800",
+    category: "Design",
+    link: "https://example.com/ecommerce-experience",
+  },
+  {
+    title: "E-commerce Experience",
+    description: "Modern e-commerce platform with unique user experience",
+    image: "/placeholder.svg?height=600&width=800",
+    category: "Design",
+    link: "https://example.com/ecommerce-experience",
+  },
 ];
 
 const categories = Array.from(new Set(projects.map((p) => p.category)));
@@ -95,7 +109,7 @@ export default function Projects() {
 
       {selectedCategory && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.3 }}
@@ -118,7 +132,7 @@ export default function Projects() {
                   <div className="popup-project-content">
                     <AnimatedText className="popup-project-title">{project.title}</AnimatedText>
                     <AnimatedText className="popup-project-description">{project.description}</AnimatedText>
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="popup-project-link">View Project</a>
+                    
                   </div>
                 </div>
               ))}

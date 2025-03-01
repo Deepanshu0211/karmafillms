@@ -294,14 +294,16 @@ h6 {
 
 /* Popup Card */
 .popup-card {
+  display: flex;
+  flex-direction: column;
   font-family: var(--font-gilroy);
   background: rgba(255, 255, 255, 0);
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 15px;
-  width: 80%;
-  max-width: 700px;
+  width: auto;
+ 
   position: relative;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
@@ -316,9 +318,9 @@ h6 {
 /* Close Button */
 .close-button {
   position: absolute;
-  top: 20px;
+  top: 5px;
   right: 15px;
-  background: rgb(0, 0, 0);
+
   color: white;
   border: none;
   padding: 5px 10px;
@@ -329,7 +331,8 @@ h6 {
 }
 
 .close-button:hover {
-  background: rgb(39, 38, 38);
+  
+  transform: translateY(-3px);
 }
 
 /* Project List */
@@ -352,7 +355,9 @@ h6 {
 }
 
 .popup-project-card:hover {
+ 
   transform: translateY(-5px);
+ 
 }
 
 .popup-project-image {
