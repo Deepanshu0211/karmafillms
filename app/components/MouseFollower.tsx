@@ -6,6 +6,7 @@ import { motion, useSpring } from "framer-motion"
 export default function MouseFollower() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(true) // Track screen size
 
   const springConfig = { damping: 25, stiffness: 120 }
   const x = useSpring(0, springConfig)
@@ -13,6 +14,19 @@ export default function MouseFollower() {
   const scale = useSpring(1, springConfig)
 
   useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth > 768) // Hide on mobile
+    }
+
+    checkScreenSize() // Run once on mount
+    window.addEventListener("resize", checkScreenSize)
+
+    return () => window.removeEventListener("resize", checkScreenSize)
+  }, [])
+
+  useEffect(() => {
+    if (!isDesktop) return // Stop tracking if on mobile
+
     const updateMousePosition = (ev: MouseEvent) => {
       setMousePosition({ x: ev.clientX, y: ev.clientY })
     }
@@ -33,43 +47,33 @@ export default function MouseFollower() {
       window.removeEventListener("mousemove", updateMousePosition)
       window.removeEventListener("mouseover", handleMouseOver)
     }
-  }, [])
+  }, [isDesktop])
 
   useEffect(() => {
-    x.set(mousePosition.x - 20)
-    y.set(mousePosition.y - 20)
-    scale.set(isHovering ? 1.5 : 1)
-  }, [mousePosition, isHovering, x, y, scale])
+    if (isDesktop) {
+      x.set(mousePosition.x - 20)
+      y.set(mousePosition.y - 20)
+      scale.set(isHovering ? 1.5 : 1)
+    }
+  }, [mousePosition, isHovering, x, y, scale, isDesktop])
 
   return (
     <>
-      <motion.div
-        className="fixed pointer-events-none z-50"
-        style={{
-          x,
-          y,
-          scale,
-          width: 40,
-          height: 40,
-          borderRadius: "50%",
-          border: "2px solid rgba(255, 255, 0.8)",
-          mixBlendMode: "difference",
-        }}
-      />
-      <motion.div
-        className="fixed pointer-events-none z-50"
-        style={{
-          x,
-          y,
-          scale: scale.get() * 0.4,
-          width: 8,
-          height: 8,
-          borderRadius: "50%",
-          backgroundColor: "white",
-          mixBlendMode: "difference",
-        }}
-      />
+      {isDesktop && (
+        <motion.div
+          className="fixed pointer-events-none z-50"
+          style={{
+            x,
+            y,
+            scale,
+            width: 40,
+            height: 40,
+            borderRadius: "50%",
+            border: "2px solid rgba(255, 255, 0.8)",
+            mixBlendMode: "difference",
+          }}
+        />
+      )}
     </>
   )
 }
-

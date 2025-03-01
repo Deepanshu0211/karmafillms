@@ -229,7 +229,7 @@ h6 {
   width: 100%;
 }
 
-/* Mobile Menu Styles */
+
 .mobile-menu-button {
   display: none;
   background: none;
@@ -450,7 +450,7 @@ h6 {
   transform: translateX(10px);
 }
 
-/* Home Page Styles */
+
 .hero {
   border-radius: 0.2rem;
   display: flex;
@@ -462,7 +462,7 @@ h6 {
   width: 100%;
   height: 90vh;
   position: absolute;
-  top: 10%; /* Adjust position above iframe */
+  top: 10%; 
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
@@ -584,7 +584,7 @@ h6 {
   transition: all 0.3s ease;
 }
 
-/* Projects Page Styles */
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
