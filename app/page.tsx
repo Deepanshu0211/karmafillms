@@ -91,19 +91,19 @@ function Section({ children }: { children: React.ReactNode }) {
 }
 
 export default function Home() {
+  
   return (
     <main>
       <Section>
         <div className="container">
-          {/* <div className="spline-container">
-            <iframe 
-              src="https://my.spline.design/liquidgradientabstractbackground-4a5898e5a6dcea8b7d9a3d38a27fcedf/"
-              className="spline-bg"
-              loading="lazy"
-              allow="fullscreen; xr-spatial-tracking; accelerometer"
-              style={{ willChange: "transform", pointerEvents: "none" }}
-            ></iframe>
-          </div> */}
+          <div className="spline-container">
+             <img 
+                src="https://media.discordapp.net/attachments/1121543910632722472/1345077733939609650/gradient-background-2024-01-22-06-19-09-utc.gif?ex=67c33cc2&is=67c1eb42&hm=b516083d571df9b034bcabbcd78d7ace6526c89015cde132b03b848eb7baed5f&=&width=791&height=445" 
+                alt="Animated Background" 
+                className="spline-bg" 
+                style={{ willChange: "transform", pointerEvents: "none" }} 
+              />
+          </div> 
           <div className="hero">
             <AnimatedText className="hero-title">We craft digital experiences</AnimatedText>
             <AnimatedText className="hero-subtitle">

@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -100,11 +99,16 @@ h6 {
   margin: 0 auto;
   padding: 0 5%;
 }
-
 .section {
   padding: 100px 0;
 }
 
+.section-title{
+  padding-bottom:5px;
+  opacity: 0.4px;
+  font-size: 1.3rem;
+
+}
 .section-subtitle{
   padding-bottom:20px;
   opacity: 0.4px;
@@ -234,7 +238,7 @@ h6 {
 }
 .spline-container {
   position: relative;
- 
+  border-radius: 15px;
   width: 90vw;
   height: 70vh;
   z-index: -99999; /* Keep it behind everything */
@@ -244,12 +248,9 @@ h6 {
   width: 88%;
   height: 150%;
   border: none;
-  animation: reduce-fps 1s steps(30) infinite;
+ 
 }
-@keyframes reduce-fps {
-  0% { opacity: 1; }
-  100% { opacity: 1; }
-}
+
 .hamburger,
 .hamburger::before,
 .hamburger::after {
@@ -445,9 +446,10 @@ h6 {
 /* Projects Page Styles */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   padding: 0 5%;
+  backdrop-filter: blur(8px);
 }
 
 .project-card {
@@ -458,7 +460,7 @@ h6 {
   border: 2px solid var(--border);
   border-color: grey;
   transition: all 0.3s ease;
-  z-index: 99;
+  z-index: 9999999;
 }
 .project-card:hover {
   transform: translateY(-20px);
@@ -603,4 +605,4 @@ h6 {
     transform: translateY(-3px);
   }
 }
-
+  
