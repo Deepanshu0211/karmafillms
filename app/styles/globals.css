@@ -239,10 +239,18 @@ h6 {
 .spline-container {
   position: relative;
   border-radius: 15px;
-  width: 90vw;
+  width: 80vw;
   height: 70vh;
   z-index: -99999; /* Keep it behind everything */
   overflow: hidden;
+  background: radial-gradient(circle, #2e1e1a, #3e1616, #600f0f, #1b1b1b);
+  background-size: 400% 400%;
+  animation: gradientShift 6s ease infinite;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 .spline-bg {
   width: 88%;
