@@ -30,7 +30,6 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
     console.log(formData)
   }
 
@@ -112,4 +111,3 @@ export default function Contact() {
     </main>
   )
 }
-

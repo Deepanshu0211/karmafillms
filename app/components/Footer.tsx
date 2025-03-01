@@ -1,10 +1,10 @@
 export default function Footer() {
   return (
-    <footer className="py-20 border-t border-[var(--border)]">
+    <footer className="py-20 border-t border-[var(--border)] font-gilroy">
       <div className="container">
         <div className="grid md:grid-cols-4 gap-12">
           <div>
-            <h3 className="text-lg mb-4">Karmā Films</h3>
+            <h3 className="text-lg mb-4 font-semibold">Karmā Films</h3>
             <p className="text-gray-400 text-sm">
               Creating digital experiences
               <br />
@@ -70,6 +70,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
-

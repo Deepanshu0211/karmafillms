@@ -13,6 +13,29 @@
   font-weight: 400;
   font-style: normal;
 }
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Regular.woff2") format("woff2"),
+       url("/fonts/Gilroy-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Bold.woff2") format("woff2"),
+       url("/fonts/Gilroy-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Regular.woff2") format("woff2"),
+       url("/fonts/Gilroy-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 @font-face {
   font-family: "Gilroy";
@@ -264,7 +287,7 @@ h6 {
   position: relative;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
-  background: rgba(66, 65, 65, 0.74);
+  background: rgba(75, 72, 72, 0.589);
   margin-bottom: 20px;
   width: 100%;
   height: auto; /* Prevents overlapping */
