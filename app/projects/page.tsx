@@ -50,7 +50,7 @@ const projects = [
   },
 ];
 
-const categories = [...new Set(projects.map((p) => p.category))];
+const categories = Array.from(new Set(projects.map((p) => p.category)));
 
 function AnimatedText({ children, className }: { children: React.ReactNode; className?: string }) {
   const ref = useRef(null);
@@ -118,7 +118,7 @@ export default function Projects() {
                   <div className="popup-project-content">
                     <AnimatedText className="popup-project-title">{project.title}</AnimatedText>
                     <AnimatedText className="popup-project-description">{project.description}</AnimatedText>
-                    {/* <a href={project.link} target="_blank" rel="noopener noreferrer" className="popup-project-link">View Project</a> */}
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="popup-project-link">View Project</a>
                   </div>
                 </div>
               ))}
