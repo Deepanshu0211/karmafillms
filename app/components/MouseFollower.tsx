@@ -69,8 +69,11 @@ export default function MouseFollower() {
             width: 40,
             height: 40,
             borderRadius: "50%",
-            border: "2px solid rgba(255, 255, 0.8)",
-            mixBlendMode: "difference",
+            border: "none",  /* Removed the border to avoid yellow on black background */
+            backgroundColor: "white", /* White background for cursor */
+            mixBlendMode: "exclusion", /* Blend mode if you want the cursor to interact with background */
+            pointerEvents: "none",
+            zIndex: 50,
           }}
         />
       )}
