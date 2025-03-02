@@ -84,7 +84,15 @@ function AnimatedText({ children, className }: { children: React.ReactNode; clas
   );
 }
 
-function AnimatedCategory({ category, index }: { category: string; index: number }) {
+function AnimatedCategory({
+  category,
+  index,
+  setSelectedCategory, // Pass the setSelectedCategory function here
+}: {
+  category: string;
+  index: number;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<string | null>>;
+}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
@@ -96,7 +104,7 @@ function AnimatedCategory({ category, index }: { category: string; index: number
       transition={{ duration: 0.5, delay: index * 0.2 }} // Delay each category by 0.2s
     >
       <button
-        onClick={() => {}}
+        onClick={() => setSelectedCategory(category)} // Set the category when clicked
         className="category-card"
       >
         {category}
@@ -118,7 +126,12 @@ export default function Projects() {
 
         <div className="projects-grid">
           {categories.map((category, index) => (
-            <AnimatedCategory key={category} category={category} index={index} />
+            <AnimatedCategory
+              key={category}
+              category={category}
+              index={index}
+              setSelectedCategory={setSelectedCategory} // Pass setSelectedCategory to the child component
+            />
           ))}
         </div>
       </div>
@@ -130,7 +143,7 @@ export default function Projects() {
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.1 }}
           className="popup-overlay"
-          onClick={() => setSelectedCategory(null)}
+          onClick={() => setSelectedCategory(null)} // Close the popup when the overlay is clicked
         >
           <div className="popup-card" onClick={(e) => e.stopPropagation()}>
             <button onClick={() => setSelectedCategory(null)} className="close-button">×</button>
