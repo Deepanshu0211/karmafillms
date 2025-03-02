@@ -96,15 +96,27 @@ export default function Projects() {
         </AnimatedText>
 
         <div className="projects-grid">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className="category-card"
-            >
-              {category}
-            </button>
-          ))}
+          {categories.map((category, index) => {
+            const ref = useRef(null);
+            const isInView = useInView(ref, { once: true, amount: 0.5 });
+
+            return (
+              <motion.div
+                key={category}
+                ref={ref}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }} // Delay each category by 0.2s
+              >
+                <button
+                  onClick={() => setSelectedCategory(category)}
+                  className="category-card"
+                >
+                  {category}
+                </button>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
@@ -133,7 +145,6 @@ export default function Projects() {
                   <div className="popup-project-content">
                     <AnimatedText className="popup-project-title">{project.title}</AnimatedText>
                     <AnimatedText className="popup-project-description">{project.description}</AnimatedText>
-                    
                   </div>
                 </div>
               ))}
