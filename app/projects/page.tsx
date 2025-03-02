@@ -84,6 +84,27 @@ function AnimatedText({ children, className }: { children: React.ReactNode; clas
   );
 }
 
+function AnimatedCategory({ category, index }: { category: string; index: number }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.5, delay: index * 0.2 }} // Delay each category by 0.2s
+    >
+      <button
+        onClick={() => {}}
+        className="category-card"
+      >
+        {category}
+      </button>
+    </motion.div>
+  );
+}
+
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
@@ -96,27 +117,9 @@ export default function Projects() {
         </AnimatedText>
 
         <div className="projects-grid">
-          {categories.map((category, index) => {
-            const ref = useRef(null);
-            const isInView = useInView(ref, { once: true, amount: 0.5 });
-
-            return (
-              <motion.div
-                key={category}
-                ref={ref}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }} // Delay each category by 0.2s
-              >
-                <button
-                  onClick={() => setSelectedCategory(category)}
-                  className="category-card"
-                >
-                  {category}
-                </button>
-              </motion.div>
-            );
-          })}
+          {categories.map((category, index) => (
+            <AnimatedCategory key={category} category={category} index={index} />
+          ))}
         </div>
       </div>
 
