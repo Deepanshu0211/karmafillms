@@ -3,13 +3,15 @@ import { ArrowRight } from "lucide-react"
 import { Button } from "./components/ui/button"
 import ServiceCard from "./components/service-card"
 import TeamMember from "./components/team-member"
-
+import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
 import AnimatedText from "./components/animated-text"
 import PageTransition from "./components/page-transition"
 
 export default function Home() {
   return (
     <PageTransition>
+      <Navbar />
       <main className="flex min-h-screen flex-col">
         {/* Hero Section */}
         <section className="relative flex flex-col items-center justify-center min-h-[90vh] px-4 overflow-hidden">
@@ -146,7 +148,7 @@ export default function Home() {
           </div>
         </section>
 
-       
+       <Footer />
       </main>
     </PageTransition>
   )

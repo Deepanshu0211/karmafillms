@@ -6,7 +6,8 @@ import ProjectCategory from "../components/project-category"
 import ProjectModal from "../components/project-modal"
 import AnimatedText from "../components/animated-text"
 import PageTransition from "../components/page-transition"
-
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 // Project categories and their content
 const categories = [
   {
@@ -139,6 +140,7 @@ const openModal = (category: Category) => {
 
   return (
     <PageTransition>
+        <Navbar />
       <main className="flex min-h-screen flex-col py-24 px-4">
         <div className="container">
           <div className="card-box p-8 mb-10 text-center">
@@ -171,6 +173,7 @@ const openModal = (category: Category) => {
         </div>
 
         {selectedCategory && <ProjectModal content={selectedCategory.content} onClose={closeModal} />}
+        <Footer />
       </main>
     </PageTransition>
   )

@@ -8,6 +8,8 @@ import { Textarea } from "../components/ui/textarea"
 import { Mail, MapPin, Phone } from "lucide-react"
 import AnimatedText from "../components/animated-text"
 import PageTransition from "../components/page-transition"
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -42,6 +44,7 @@ export default function ContactPage() {
 
   return (
     <PageTransition>
+        <Navbar />
       <main className="flex min-h-screen flex-col">
         {/* Hero Section */}
         <section className="relative flex flex-col items-center justify-center min-h-[40vh] px-4 overflow-hidden">
@@ -153,6 +156,7 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
+        <Footer />
       </main>
     </PageTransition>
   )

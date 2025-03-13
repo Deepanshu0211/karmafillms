@@ -3,12 +3,14 @@
 import Image from "next/image"
 import AnimatedText from "../components/animated-text"
 import { motion } from "framer-motion"
-
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 import PageTransition from "../components/page-transition"
 
 export default function AboutPage() {
   return (
     <PageTransition>
+        <Navbar />
       <main className="flex min-h-screen flex-col">
         {/* Hero Section */}
         <section className="relative flex flex-col items-center justify-center min-h-[60vh] px-4 overflow-hidden">
@@ -171,7 +173,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        
+        <Footer />
       </main>
     </PageTransition>
   )
