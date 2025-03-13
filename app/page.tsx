@@ -1,181 +1,154 @@
-"use client"
-
-import { motion, useInView } from "framer-motion"
 import Link from "next/link"
-import Image from "next/image"
-import type React from "react"
-import { useRef } from "react"
-
-const services = [
-  {
-    title: "Digital Design",
-    description: "We create beautiful, intuitive interfaces that engage users.",
-    deliverables: ["UI/UX Design", "Design Systems", "Interactive Prototypes", "User Research"],
-  },
-  {
-    title: "Development",
-    description: "We build robust, scalable applications using modern technologies.",
-    deliverables: ["Web Applications", "Mobile Apps", "E-commerce", "CMS Development"],
-  },
-  {
-    title: "Branding",
-    description: "We develop cohesive brand identities that resonate with audiences.",
-    deliverables: ["Graphic Designing", "Visual Identity", "Brand Guidelines", "Marketing Materials"],
-  },
-  {
-    title: "Video Editing",
-    description: "We craft seamless video edits that captivate audiences and bring stories to life.",
-    deliverables: ["Short Form", "Long Form", "Motion Designing"],
-  },
-]
-
-const team = [
-  {
-    name: "Alex Chen",
-    role: "Creative Director",
-    bio: "With over 10 years of experience in digital design and brand strategy.",
-    image: "/placeholder.svg?height=400&width=400",
-  },
-  {
-    name: "Sarah Miller",
-    role: "Lead Designer",
-    bio: "Specializing in user interface design and systems.",
-    image: "/placeholder.svg?height=400&width=400",
-  },
-  {
-    name: "James Wilson",
-    role: "Technical Lead",
-    bio: "Expert in modern web technologies and application architecture.",
-    image: "/placeholder.svg?height=400&width=400",
-  },
-  {
-    name: "Emma Davis",
-    role: "Strategy Director",
-    bio: "Focused on helping brands develop their digital presence.",
-    image: "/placeholder.svg?height=400&width=400",
-  },
-]
-
-function AnimatedText({ children, className }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.5 })
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
-function Section({ children }: { children: React.ReactNode }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
-
-  return (
-    <motion.section
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.8 }}
-      className="section"
-    >
-      {children}
-    </motion.section>
-  )
-}
+import { ArrowRight } from "lucide-react"
+import { Button } from "./components/ui/button"
+import ServiceCard from "./components/service-card"
+import TeamMember from "./components/team-member"
+import Footer from "./components/footer"
+import AnimatedText from "./components/animated-text"
+import PageTransition from "./components/page-transition"
 
 export default function Home() {
-  
   return (
-    <main>
-      <Section>
-        <div className="container">
-          <div className="spline-container">
-             {/* <img 
-                src="https://media.discordapp.net/attachments/1121543910632722472/1345077733939609650/gradient-background-2024-01-22-06-19-09-utc.gif?ex=67c33cc2&is=67c1eb42&hm=b516083d571df9b034bcabbcd78d7ace6526c89015cde132b03b848eb7baed5f&=&width=791&height=445" 
-                alt="Animated Background" 
-                className="spline-bg" 
-                style={{ willChange: "transform", pointerEvents: "none" }} 
-              /> */}
-          </div> 
-          <div className="hero">
-            <AnimatedText className="hero-title">We craft digital experiences</AnimatedText>
-            <AnimatedText className="hero-subtitle">
-              A creative studio focused on design, development, and branding. We help brands stand out in the digital&nbsp;age.
-            </AnimatedText>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              <Link href="/projects" className="btn">
-                View Projects
-              </Link>
-            </motion.div>
+    <PageTransition>
+      <main className="flex min-h-screen flex-col">
+        {/* Hero Section */}
+        <section className="relative flex flex-col items-center justify-center min-h-[90vh] px-4 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-background/10 to-background/80 backdrop-blur-sm z-0"></div>
+          <div className="container relative z-10 flex flex-col items-center text-center gap-8 max-w-5xl">
+            <div className="card-box p-8 md:p-12">
+              <AnimatedText
+                text="Transforming Visions into Visual Stories"
+                className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight"
+                direction="down"
+              />
+              <AnimatedText
+                text="We craft compelling visual narratives that captivate audiences and elevate brands."
+                className="text-xl md:text-2xl text-body max-w-3xl mt-6"
+                direction="up"
+                delay={0.3}
+              />
+              <Button asChild size="lg" className="mt-8 group rounded-xl" data-cursor="button">
+                <Link href="/projects">
+                  View Projects
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+            </div>
           </div>
-        </div>
-      </Section>
+          <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+            <div className="animate-bounce glass p-3 rounded-full">
+              <ArrowRight className="h-6 w-6 rotate-90" />
+            </div>
+          </div>
+        </section>
 
-      <Section>
-        <div className="container">
-          <AnimatedText className="section-title">Our Services</AnimatedText>
-          <div className="services">
-            {services.map((service, i) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="service-card"
-              >
-                <AnimatedText className="service-title">{service.title}</AnimatedText>
-                <AnimatedText className="service-description">{service.description}</AnimatedText>
-                <ul className="service-list">
-                  {service.deliverables.map((item) => (
-                    <AnimatedText key={item} className="service-list-item">
-                      • {item}
-                    </AnimatedText>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+        {/* Services Section */}
+        <section className="section-container bg-muted/50">
+          <div className="container">
+            <div className="card-box p-8 mb-16 text-center">
+              <AnimatedText text="Our Services" className="text-3xl md:text-4xl font-bold" direction="left" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <ServiceCard
+                title="Content Creation"
+                description="From concept to final cut, we create engaging content that tells your story."
+                icon="VideoIcon"
+                delay={0.1}
+              />
+              <ServiceCard
+                title="Short Form Content"
+                description="Impactful short-form videos optimized for social media and digital platforms."
+                icon="InstagramIcon"
+                delay={0.2}
+              />
+              <ServiceCard
+                title="Long Form Production"
+                description="Documentaries, films, and in-depth storytelling with cinematic quality."
+                icon="FilmIcon"
+                delay={0.3}
+              />
+              <ServiceCard
+                title="Visual Design"
+                description="Eye-catching graphics, thumbnails, and visual assets that enhance your brand."
+                icon="PaletteIcon"
+                delay={0.4}
+              />
+              <ServiceCard
+                title="Brand Identity"
+                description="Cohesive visual language and guidelines that strengthen your brand presence."
+                icon="BriefcaseIcon"
+                delay={0.5}
+              />
+              <ServiceCard
+                title="Post-Production"
+                description="Expert editing, color grading, and visual effects to perfect your content."
+                icon="SlidersIcon"
+                delay={0.6}
+              />
+            </div>
           </div>
-        </div>
-      </Section>
+        </section>
 
-      <Section>
-        <div className="container">
-          <AnimatedText className="section-title">Our Team</AnimatedText>
-          <div className="team">
-            {team.map((member, i) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="team-member"
-              >
-                <Image
-                  src={member.image || "/placeholder.svg"}
-                  alt={member.name}
-                  width={400}
-                  height={400}
-                  className="team-member-image"
-                />
-                <AnimatedText className="team-member-name">{member.name}</AnimatedText>
-                <AnimatedText className="team-member-role">{member.role}</AnimatedText>
-                <AnimatedText className="team-member-bio">{member.bio}</AnimatedText>
-              </motion.div>
-            ))}
+        {/* Team Section */}
+        <section className="section-container">
+          <div className="container">
+            <div className="card-box p-8 mb-16 text-center">
+              <AnimatedText text="Meet Our Team" className="text-3xl md:text-4xl font-bold" direction="right" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <TeamMember
+                name="Alex Morgan"
+                role="Creative Director"
+                image="/placeholder.svg?height=400&width=400"
+                delay={0.1}
+              />
+              <TeamMember
+                name="Jamie Chen"
+                role="Lead Editor"
+                image="/placeholder.svg?height=400&width=400"
+                delay={0.2}
+              />
+              <TeamMember
+                name="Sam Wilson"
+                role="Motion Designer"
+                image="/placeholder.svg?height=400&width=400"
+                delay={0.3}
+              />
+              <TeamMember
+                name="Taylor Reed"
+                role="Content Strategist"
+                image="/placeholder.svg?height=400&width=400"
+                delay={0.4}
+              />
+            </div>
           </div>
-        </div>
-      </Section>
-    </main>
+        </section>
+
+        {/* CTA Section */}
+        <section className="section-container bg-primary/5 backdrop-blur-sm">
+          <div className="container max-w-4xl">
+            <div className="card-box p-10 text-center">
+              <AnimatedText
+                text="Ready to transform your vision?"
+                className="text-3xl md:text-4xl font-bold mb-6"
+                direction="up"
+              />
+              <AnimatedText
+                text="Let's create something extraordinary together."
+                className="text-xl text-body mb-8"
+                direction="up"
+                delay={0.2}
+              />
+              <Button asChild size="lg" className="rounded-xl" data-cursor="button">
+                <Link href="/contact">Get in Touch</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+       
+      </main>
+    </PageTransition>
   )
 }
+

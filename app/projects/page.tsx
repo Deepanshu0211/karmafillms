@@ -1,173 +1,178 @@
 "use client"
 
-import { motion, useInView } from "framer-motion";
-import Image from "next/image";
-import { useRef, useState } from "react";
-import type React from "react";
+import { useState } from "react"
+import { motion } from "framer-motion"
+import ProjectCategory from "../components/project-category"
+import ProjectModal from "../components/project-modal"
+import AnimatedText from "../components/animated-text"
+import PageTransition from "../components/page-transition"
 
-const projects = [
+// Project categories and their content
+const categories = [
   {
-    title: "Digital Platform",
-    description: "A comprehensive digital platform for enterprise solutions",
+    id: "thumbnails",
+    title: "Thumbnails",
+    description: "Eye-catching thumbnails that drive engagement",
     image: "/placeholder.svg?height=600&width=800",
-    category: "Thumbnail",
-    link: "https://example.com/digital-platform",
+    content: {
+      title: "Thumbnail Design",
+      description:
+        "Our thumbnail designs are strategically crafted to maximize click-through rates while maintaining brand consistency. We combine psychology, design principles, and platform-specific optimization to create thumbnails that stand out in crowded feeds.",
+      projects: [
+        { title: "Tech Review Series", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Travel Vlog Collection", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Cooking Tutorial Thumbnails", image: "/placeholder.svg?height=400&width=600" },
+      ],
+    },
   },
   {
-    title: "Brand Identity",
-    description: "Complete brand redesign for a tech startup",
+    id: "shortform",
+    title: "Short Form",
+    description: "Engaging short-form content for social platforms",
     image: "/placeholder.svg?height=600&width=800",
-    category: "Poster",
-    link: "https://example.com/brand-identity",
+    content: {
+      title: "Short Form Content",
+      description:
+        "We specialize in creating short-form videos that capture attention in seconds. Our team understands the unique requirements of platforms like TikTok, Instagram Reels, and YouTube Shorts to deliver content that resonates with your audience and drives engagement.",
+      projects: [
+        { title: "Product Launch Teasers", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Brand Story Series", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Educational Shorts", image: "/placeholder.svg?height=400&width=600" },
+      ],
+    },
   },
   {
-    title: "E-commerce Experience",
-    description: "Modern e-commerce platform with unique user experience",
+    id: "longform",
+    title: "Long Form",
+    description: "Immersive long-form video content and documentaries",
     image: "/placeholder.svg?height=600&width=800",
-    category: "Brand Guidelines",
-    link: "https://example.com/ecommerce-experience",
+    content: {
+      title: "Long Form Production",
+      description:
+        "Our long-form content tells deeper stories with cinematic quality. From documentaries to in-depth tutorials, we handle the entire production process from concept development to final delivery, ensuring a compelling narrative that keeps viewers engaged.",
+      projects: [
+        { title: "Corporate Documentary", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Product Feature Film", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Interview Series", image: "/placeholder.svg?height=400&width=600" },
+      ],
+    },
   },
   {
-    title: "E-commerce Experience",
-    description: "Modern e-commerce platform with unique user experience",
+    id: "posters",
+    title: "Posters",
+    description: "Striking poster designs for marketing campaigns",
     image: "/placeholder.svg?height=600&width=800",
-    category: "Long Form",
-    link: "https://example.com/ecommerce-experience",
+    content: {
+      title: "Poster Design",
+      description:
+        "Our poster designs combine visual impact with clear messaging to effectively communicate your brand's value. Whether for digital campaigns or physical displays, we create posters that capture attention and drive action.",
+      projects: [
+        { title: "Event Promotion Series", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Product Launch Campaign", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Brand Awareness Posters", image: "/placeholder.svg?height=400&width=600" },
+      ],
+    },
   },
   {
-    title: "E-commerce Experience",
-    description: "Modern e-commerce platform with unique user experience",
+    id: "design",
+    title: "Design",
+    description: "Creative design solutions for various media",
     image: "/placeholder.svg?height=600&width=800",
-    category: "Short Form",
-    link: "https://example.com/ecommerce-experience",
+    content: {
+      title: "Visual Design",
+      description:
+        "Our design team creates visually stunning assets that enhance your brand's presence across all touchpoints. From social media graphics to UI/UX design, we deliver cohesive visual solutions that align with your brand identity.",
+      projects: [
+        { title: "Social Media Kit", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Website Visual Design", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Marketing Collateral", image: "/placeholder.svg?height=400&width=600" },
+      ],
+    },
   },
   {
-    title: "E-commerce Experience",
-    description: "Modern e-commerce platform with unique user experience",
+    id: "brandguidelines",
+    title: "Brand Guidelines",
+    description: "Comprehensive brand identity systems",
     image: "/placeholder.svg?height=600&width=800",
-    category: "Design",
-    link: "https://example.com/ecommerce-experience",
+    content: {
+      title: "Brand Guidelines",
+      description:
+        "We develop comprehensive brand guidelines that ensure consistency across all platforms and touchpoints. Our brand systems include logo usage, typography, color palettes, imagery style, and voice guidelines to maintain a cohesive brand experience.",
+      projects: [
+        { title: "Startup Brand System", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Brand Refresh Guidelines", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Multi-Platform Brand Guide", image: "/placeholder.svg?height=400&width=600" },
+      ],
+    },
   },
-  {
-    title: "E-commerce Experience",
-    description: "Modern e-commerce platform with unique user experience",
-    image: "/placeholder.svg?height=600&width=800",
-    category: "Design",
-    link: "https://example.com/ecommerce-experience",
-  },
-  {
-    title: "E-commerce Experience",
-    description: "Modern e-commerce platform with unique user experience",
-    image: "/placeholder.svg?height=600&width=800",
-    category: "Design",
-    link: "https://example.com/ecommerce-experience",
-  },
-  
-];
+]
 
-const categories = Array.from(new Set(projects.map((p) => p.category)));
+export default function ProjectsPage() {
+  const [selectedCategory, setSelectedCategory] = useState<typeof categories[number] | null>(null)
 
-function AnimatedText({ children, className }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+interface Project {
+    title: string
+    image: string
 }
 
-function AnimatedCategory({
-  category,
-  index,
-  setSelectedCategory, // Pass the setSelectedCategory function here
-}: {
-  category: string;
-  index: number;
-  setSelectedCategory: React.Dispatch<React.SetStateAction<string | null>>;
-}) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.5, delay: index * 0.2 }} // Delay each category by 0.2s
-    >
-      <button
-        onClick={() => setSelectedCategory(category)} // Set the category when clicked
-        className="category-card"
-      >
-        {category}
-      </button>
-    </motion.div>
-  );
+interface CategoryContent {
+    title: string
+    description: string
+    projects: Project[]
 }
 
-export default function Projects() {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+interface Category {
+    id: string
+    title: string
+    description: string
+    image: string
+    content: CategoryContent
+}
+
+const openModal = (category: Category) => {
+    setSelectedCategory(category)
+}
+
+  const closeModal = () => {
+    setSelectedCategory(null)
+  }
 
   return (
-    <main className="section">
-      <div className="container">
-        <AnimatedText className="section-title">Our Projects</AnimatedText>
-        <AnimatedText className="section-subtitle">
-          A collection of our recent work across design, development, and branding.
-        </AnimatedText>
-
-        <div className="projects-grid">
-          {categories.map((category, index) => (
-            <AnimatedCategory
-              key={category}
-              category={category}
-              index={index}
-              setSelectedCategory={setSelectedCategory} // Pass setSelectedCategory to the child component
+    <PageTransition>
+      <main className="flex min-h-screen flex-col py-24 px-4">
+        <div className="container">
+          <div className="card-box p-8 mb-10 text-center">
+            <AnimatedText text="Our Projects" className="text-3xl md:text-5xl font-bold mb-4" direction="down" />
+            <AnimatedText
+              text="Explore our work across different categories"
+              className="text-xl text-body"
+              direction="up"
+              delay={0.2}
             />
-          ))}
-        </div>
-      </div>
-
-      {selectedCategory && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.1 }}
-          className="popup-overlay"
-          onClick={() => setSelectedCategory(null)} // Close the popup when the overlay is clicked
-        >
-          <div className="popup-card" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => setSelectedCategory(null)} className="close-button">×</button>
-            <h2 className="popup-title">{selectedCategory} Projects</h2>
-            <div className="projects-list">
-              {projects.filter((p) => p.category === selectedCategory).map((project) => (
-                <div key={project.title} className="popup-project-card">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    width={300}
-                    height={200}
-                    className="popup-project-image"
-                  />
-                  <div className="popup-project-content">
-                    <AnimatedText className="popup-project-title">{project.title}</AnimatedText>
-                    <AnimatedText className="popup-project-description">{project.description}</AnimatedText>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
-        </motion.div>
-      )}
-    </main>
-  );
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ staggerChildren: 0.1 }}
+          >
+            {categories.map((category, index) => (
+              <ProjectCategory
+                key={category.id}
+                title={category.title}
+                description={category.description}
+                image={category.image}
+                onClick={() => openModal(category)}
+                delay={index * 0.1}
+              />
+            ))}
+          </motion.div>
+        </div>
+
+        {selectedCategory && <ProjectModal content={selectedCategory.content} onClose={closeModal} />}
+      </main>
+    </PageTransition>
+  )
 }
+

@@ -1,116 +1,171 @@
 "use client"
-import "../styles/globals.css"
-import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
-import { usePathname } from "next/navigation"
-import { useState, useEffect } from "react"
 
-const navItems = [
-  { name: "Home", href: "/" },
-  { name: "Projects", href: "/projects" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
-]
+import { useState, useEffect, useRef } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { motion, AnimatePresence } from "framer-motion"
+import { Menu, X } from "lucide-react"
+import { Button } from "./ui/button"
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "./ui/sheet"
+import { ThemeToggle } from "./theme-toggle"
 
 export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [lastScrollY, setLastScrollY] = useState(0)
+  const [visible, setVisible] = useState(true)
   const pathname = usePathname()
-  const [isOpen, setIsOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const sheetTriggerRef = useRef(null)
+  const closeButtonRef = useRef(null)
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/projects", label: "Projects" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
+  ]
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768)
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      // Determine if scrolled down from top
+      if (currentScrollY > 10) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+
+      // Determine scroll direction for hiding/showing
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down
+        setVisible(false)
+      } else {
+        // Scrolling up
+        setVisible(true)
+      }
+
+      setLastScrollY(currentScrollY)
     }
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-    return () => window.removeEventListener("resize", checkMobile)
-  }, [])
 
-  const toggleMenu = () => setIsOpen(!isOpen)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [lastScrollY])
 
-  const menuVariants = {
-    closed: {
-      opacity: 0,
-      x: "100%",
+  // Animation variants
+  const navVariants = {
+    hidden: { y: -100, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
       transition: {
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
         duration: 0.3,
-        ease: [0.4, 0, 0.2, 1],
       },
     },
-    open: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.3,
-        ease: [0.4, 0, 0.2, 1],
-      },
+    exit: {
+      y: -100,
+      opacity: 0,
+      transition: { duration: 0.2 },
     },
   }
 
   return (
-    <header className="header">
-      <div className="header-bg" />
-      <nav className="nav container">
-        <Link href="/" className="nav-logo">
-          Karmā Films
-        </Link>
+    <AnimatePresence>
+      {visible && (
+        <motion.header
+          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+            isScrolled ? "py-2 glass shadow-lg rounded-b-2xl mx-4 mt-2" : "py-4 bg-transparent"
+          }`}
+          variants={navVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          <div className="container flex items-center justify-between">
+            <Link href="/" className="font-bold text-xl">
+              Karma Film
+            </Link>
 
-        {!isMobile && (
-          <div className="nav-links">
-            {navItems.map((item) => (
-              <Link key={item.name} href={item.href} className={`nav-link ${pathname === item.href ? "active" : ""}`}>
-                <span>{item.name}</span>
-                {pathname === item.href && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="nav-link-indicator"
-                    transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
-                  />
-                )}
-              </Link>
-            ))}
-          </div>
-        )}
-
-        {isMobile && (
-          <>
-            <button className="mobile-menu-button" onClick={toggleMenu} aria-label="Toggle menu">
-              <span className={`hamburger ${isOpen ? "open" : ""}`} />
-            </button>
-
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  initial="closed"
-                  animate="open"
-                  exit="closed"
-                  variants={menuVariants}
-                  className="mobile-menu"
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors hover:text-primary ${
+                    pathname === link.href ? "text-primary font-semibold" : "text-body hover:text-primary"
+                  }`}
                 >
-                  {navItems.map((item) => (
-                    <motion.div
-                      key={item.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 20 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Link
-                        href={item.href}
-                        className={`mobile-menu-link ${pathname === item.href ? "active" : ""}`}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {item.name}
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="flex items-center space-x-4">
+              <ThemeToggle />
+
+              {/* Mobile Navigation */}
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button
+                    ref={sheetTriggerRef}
+                    variant="outline"
+                    size="icon"
+                    className="md:hidden rounded-full glass border-primary/20"
+                  >
+                    <Menu className="h-5 w-5" />
+                    <span className="sr-only">Toggle menu</span>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[300px] sm:w-[400px] glass border-l">
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-center justify-between mb-8">
+                      <Link href="/" className="font-bold text-xl">
+                        Karma Film
                       </Link>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </>
-        )}
-      </nav>
-    </header>
+                      <SheetClose asChild>
+                        <Button
+                          ref={closeButtonRef}
+                          variant="outline"
+                          size="icon"
+                          className="rounded-full glass border-primary/20"
+                        >
+                          <X className="h-5 w-5" />
+                          <span className="sr-only">Close menu</span>
+                        </Button>
+                      </SheetClose>
+                    </div>
+                    <nav className="flex flex-col space-y-6">
+                      {navLinks.map((link) => (
+                        <SheetClose asChild key={link.href}>
+                          <Link
+                            href={link.href}
+                            className={`text-lg font-medium transition-colors hover:text-primary ${
+                              pathname === link.href ? "text-primary font-semibold" : "text-body hover:text-primary"
+                            }`}
+                          >
+                            {link.label}
+                          </Link>
+                        </SheetClose>
+                      ))}
+                    </nav>
+                    <div className="mt-auto pt-8">
+                      <SheetClose asChild>
+                        <Button asChild className="w-full rounded-xl" size="lg">
+                          <Link href="/contact">Get in Touch</Link>
+                        </Button>
+                      </SheetClose>
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+          </div>
+        </motion.header>
+      )}
+    </AnimatePresence>
   )
 }
 

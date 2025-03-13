@@ -1,74 +1,141 @@
+import Link from "next/link"
+import { Instagram, Twitter, Youtube, Facebook, Mail } from "lucide-react"
+
 export default function Footer() {
   return (
-    <footer className="py-20 border-t border-[var(--border)] font-gilroy">
-      <div className="container">
-        <div className="grid md:grid-cols-4 gap-12">
-          <div>
-            <h3 className="text-lg mb-4 font-semibold">Karmā Films</h3>
-            <p className="text-gray-400 text-sm">
-              Creating digital experiences
-              <br />
-              that matter.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-sm font-medium mb-4">Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="/work" className="text-gray-400 text-sm hover:text-white">
-                  Work
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-400 text-sm hover:text-white">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#team" className="text-gray-400 text-sm hover:text-white">
-                  Team
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="text-gray-400 text-sm hover:text-white">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-sm font-medium mb-4">Social</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-400 text-sm hover:text-white">
-                  Twitter
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 text-sm hover:text-white">
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 text-sm hover:text-white">
-                  LinkedIn
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-sm font-medium mb-4">Contact</h4>
-            <p className="text-gray-400 text-sm">
-              hello@studio.com
-              <br />
-              +1 (555) 123-4567
-            </p>
+    <footer className="w-full py-12 md:py-16 bg-muted/30 backdrop-blur-sm border-t">
+      <div className="container grid gap-8 md:gap-12">
+        <div className="card-box p-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold">Karma Film</h3>
+              <p className="text-sm text-body max-w-xs">
+                We craft compelling visual narratives that captivate audiences and elevate brands.
+              </p>
+              <div className="flex space-x-4">
+                <Link href="#" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
+                  <Instagram className="h-5 w-5" />
+                  <span className="sr-only">Instagram</span>
+                </Link>
+                <Link href="#" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
+                  <Twitter className="h-5 w-5" />
+                  <span className="sr-only">Twitter</span>
+                </Link>
+                <Link href="#" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
+                  <Youtube className="h-5 w-5" />
+                  <span className="sr-only">YouTube</span>
+                </Link>
+                <Link href="#" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
+                  <Facebook className="h-5 w-5" />
+                  <span className="sr-only">Facebook</span>
+                </Link>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-sm font-bold">Services</h3>
+              <ul className="space-y-2 text-sm">
+                <li className="card-box p-2 px-4">
+                  <Link href="/projects" className="text-body hover:text-foreground transition-colors block">
+                    Content Creation
+                  </Link>
+                </li>
+                <li className="card-box p-2 px-4">
+                  <Link href="/projects" className="text-body hover:text-foreground transition-colors block">
+                    Short Form Content
+                  </Link>
+                </li>
+                <li className="card-box p-2 px-4">
+                  <Link href="/projects" className="text-body hover:text-foreground transition-colors block">
+                    Long Form Production
+                  </Link>
+                </li>
+                <li className="card-box p-2 px-4">
+                  <Link href="/projects" className="text-body hover:text-foreground transition-colors block">
+                    Visual Design
+                  </Link>
+                </li>
+                <li className="card-box p-2 px-4">
+                  <Link href="/projects" className="text-body hover:text-foreground transition-colors block">
+                    Brand Identity
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-sm font-bold">Company</h3>
+              <ul className="space-y-2 text-sm">
+                <li className="card-box p-2 px-4">
+                  <Link href="/about" className="text-body hover:text-foreground transition-colors block">
+                    About Us
+                  </Link>
+                </li>
+                <li className="card-box p-2 px-4">
+                  <Link href="/projects" className="text-body hover:text-foreground transition-colors block">
+                    Our Work
+                  </Link>
+                </li>
+                <li className="card-box p-2 px-4">
+                  <Link href="/contact" className="text-body hover:text-foreground transition-colors block">
+                    Contact
+                  </Link>
+                </li>
+                
+                <li className="card-box p-2 px-4">
+                  <Link href="#" className="text-body hover:text-foreground transition-colors block">
+                    Privacy Policy
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-sm font-bold">Contact</h3>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-center gap-2 text-body card-box p-3">
+                  <Mail className="h-4 w-4" />
+                  hello@karmafilm.com
+                </li>
+                <li className="text-body card-box p-3">
+                  123 Creative Avenue
+                  <br />
+                  Suite 456
+                  <br />
+                  Los Angeles, CA 90001
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div className="mt-20 pt-8 border-t border-[var(--border)] text-center text-sm text-gray-400">
-          © 2024 Studio. All rights reserved.
+
+        <div className="card-box p-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-xs text-body">&copy; {new Date().getFullYear()} Karma Film. All rights reserved.</p>
+            <div className="flex gap-6">
+              <Link
+                href="#"
+                className="text-xs text-body hover:text-foreground transition-colors glass px-3 py-1 rounded-full"
+              >
+                Terms of Service
+              </Link>
+              <Link
+                href="#"
+                className="text-xs text-body hover:text-foreground transition-colors glass px-3 py-1 rounded-full"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="#"
+                className="text-xs text-body hover:text-foreground transition-colors glass px-3 py-1 rounded-full"
+              >
+                Cookie Policy
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
-  );
+  )
 }
+

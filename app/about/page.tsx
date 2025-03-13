@@ -1,108 +1,179 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import Image from "next/image"
+import AnimatedText from "../components/animated-text"
+import { motion } from "framer-motion"
+import Footer from "../components/footer"
+import PageTransition from "../components/page-transition"
 
-function AnimatedText({ children, className }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.5 })
-
+export default function AboutPage() {
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
-export default function About() {
-  return (
-    <main className="min-h-screen pt-32 pb-16">
-      <div className="container mx-auto px-6">
-        <motion.div className="max-w-4xl mx-auto">
-          <AnimatedText className="text-5xl md:text-6xl font-medium tracking-tight mb-8">About Us</AnimatedText>
-          <div className="space-y-8 text-lg text-gray-400">
-            <AnimatedText>
-              We are a creative studio at the intersection of design and technology. Founded in 2020, we&apos;ve been helping
-              brands transform their digital presence through innovative design and cutting-edge development.
-            </AnimatedText>
-            <AnimatedText>
-              Our approach combines strategic thinking with creative execution. We believe that great design is not just
-              about aesthetics  it&apos;s about solving problems and creating meaningful experiences that resonate with
-              users.
-            </AnimatedText>
-            <AnimatedText className="text-3xl text-white font-medium tracking-tight mt-16 mb-8">
-              Our Philosophy
-            </AnimatedText>
-            <AnimatedText>
-              We believe in the power of design to transform businesses and enhance people&apos;s lives. Our work is guided
-              by three core principles:
-            </AnimatedText>
-            <ul className="space-y-4 list-disc pl-6">
-              <li>
-                <AnimatedText>
-                  <strong className="text-white">Innovation:</strong> We push boundaries and explore new possibilities
-                  in design and technology.
-                </AnimatedText>
-              </li>
-              <li>
-                <AnimatedText>
-                  <strong className="text-white">Quality:</strong> We maintain the highest standards in everything we
-                  do, from design to development.
-                </AnimatedText>
-              </li>
-              <li>
-                <AnimatedText>
-                  <strong className="text-white">Impact:</strong> We focus on creating solutions that drive real results
-                  for our clients.
-                </AnimatedText>
-              </li>
-            </ul>
-            <AnimatedText className="text-3xl text-white font-medium tracking-tight mt-16 mb-8">
-              Our Process
-            </AnimatedText>
-            <AnimatedText>
-              We follow a collaborative, iterative process that ensures we deliver solutions that meet our clients&apos;
-              needs and exceed their expectations:
-            </AnimatedText>
-            <ol className="space-y-4 list-decimal pl-6">
-              <li>
-                <AnimatedText>
-                  <strong className="text-white">Discovery:</strong> Understanding your business, goals, and challenges.
-                </AnimatedText>
-              </li>
-              <li>
-                <AnimatedText>
-                  <strong className="text-white">Strategy:</strong> Developing a comprehensive plan to achieve your
-                  objectives.
-                </AnimatedText>
-              </li>
-              <li>
-                <AnimatedText>
-                  <strong className="text-white">Design:</strong> Creating beautiful, functional solutions that engage
-                  users.
-                </AnimatedText>
-              </li>
-              <li>
-                <AnimatedText>
-                  <strong className="text-white">Development:</strong> Building robust, scalable applications using
-                  modern technologies.
-                </AnimatedText>
-              </li>
-              <li>
-                <AnimatedText>
-                  <strong className="text-white">Launch:</strong> Ensuring a smooth deployment and ongoing support.
-                </AnimatedText>
-              </li>
-            </ol>
+    <PageTransition>
+      <main className="flex min-h-screen flex-col">
+        {/* Hero Section */}
+        <section className="relative flex flex-col items-center justify-center min-h-[60vh] px-4 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-background/10 to-background/80 backdrop-blur-sm z-0"></div>
+          <div className="container relative z-10 flex flex-col items-center text-center gap-8 max-w-5xl">
+            <div className="card-box p-10">
+              <AnimatedText
+                text="About Karma Film"
+                className="text-4xl md:text-6xl font-bold tracking-tight"
+                direction="down"
+              />
+              <AnimatedText
+                text="We're a team of passionate creators dedicated to visual storytelling."
+                className="text-xl md:text-2xl text-body max-w-3xl mt-6"
+                direction="up"
+                delay={0.3}
+              />
+            </div>
           </div>
-        </motion.div>
-      </div>
-    </main>
+        </section>
+
+        {/* Our Story */}
+        <section className="section-container">
+          <div className="container max-w-5xl">
+            <div className="card-box p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                  className="rounded-xl overflow-hidden"
+                >
+                  <Image
+                    src="/placeholder.svg?height=600&width=600"
+                    alt="Karma Film team at work"
+                    width={600}
+                    height={600}
+                    className="w-full"
+                  />
+                </motion.div>
+                <div>
+                  <AnimatedText text="Our Story" className="text-3xl font-bold mb-6" direction="right" />
+                  <div className="space-y-4 text-body">
+                    <p>
+                      Founded in 2018, Karma Film began as a small team of filmmakers with a shared vision: to create
+                      visual content that not only looks beautiful but also tells meaningful stories.
+                    </p>
+                    <p>
+                      Over the years, we've evolved into a full-service content creation agency, working with brands and
+                      creators across industries to develop compelling visual narratives.
+                    </p>
+                    <p>
+                      Our name "Karma" reflects our philosophy that great content creates a positive cycle—good content
+                      leads to engaged audiences, which leads to growth and more opportunities to create impactful work.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Our Approach */}
+        <section className="section-container bg-muted/50">
+          <div className="container max-w-5xl">
+            <div className="card-box p-8 mb-12 text-center">
+              <AnimatedText text="Our Approach" className="text-3xl md:text-4xl font-bold" direction="up" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <motion.div
+                className="card-box p-8"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)" }}
+              >
+                <h3 className="text-xl font-bold mb-4">Understand</h3>
+                <p className="text-body">
+                  We begin by deeply understanding your brand, audience, and objectives. This foundation ensures our
+                  creative work aligns with your strategic goals.
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="card-box p-8"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)" }}
+              >
+                <h3 className="text-xl font-bold mb-4">Create</h3>
+                <p className="text-body">
+                  Our creative process combines technical expertise with artistic vision. We craft content that's not
+                  only visually stunning but strategically effective.
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="card-box p-8"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)" }}
+              >
+                <h3 className="text-xl font-bold mb-4">Deliver</h3>
+                <p className="text-body">
+                  We're committed to excellence in execution, delivering polished content on time and on budget, with
+                  attention to every detail.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Values */}
+        <section className="section-container">
+          <div className="container max-w-5xl">
+            <div className="card-box p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <AnimatedText text="Our Values" className="text-3xl font-bold mb-6" direction="left" />
+                  <div className="space-y-4 text-body">
+                    <p className="card-box p-4">
+                      <strong>Creativity:</strong> We push boundaries and explore new approaches to visual storytelling.
+                    </p>
+                    <p className="card-box p-4">
+                      <strong>Quality:</strong> We're committed to excellence in every frame, pixel, and interaction.
+                    </p>
+                    <p className="card-box p-4">
+                      <strong>Collaboration:</strong> We believe the best work happens through partnership with our
+                      clients.
+                    </p>
+                    <p className="card-box p-4">
+                      <strong>Impact:</strong> We create content that moves audiences and drives meaningful results.
+                    </p>
+                  </div>
+                </div>
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                  className="rounded-xl overflow-hidden"
+                >
+                  <Image
+                    src="/placeholder.svg?height=600&width=600"
+                    alt="Karma Film creative process"
+                    width={600}
+                    height={600}
+                    className="w-full"
+                  />
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        
+      </main>
+    </PageTransition>
   )
 }
+
