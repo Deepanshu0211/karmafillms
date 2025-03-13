@@ -5,9 +5,9 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
-import { Button } from "../components/ui/button"
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "../components/ui/sheet"
-import { ThemeToggle } from "../components/theme-toggle"
+import { Button } from "./components/ui/button"
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "./components/ui/sheet"
+import { ThemeToggle } from "./components/theme-toggle"
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
