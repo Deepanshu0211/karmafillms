@@ -60,7 +60,7 @@ export default function Navbar() {
       transition: {
         type: "spring",
         stiffness: 260,
-        damping: 20,
+        damping: 0,
         duration: 0.3,
       },
     },
