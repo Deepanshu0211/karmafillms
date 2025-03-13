@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react"
 import { Button } from "./components/ui/button"
 import ServiceCard from "./components/service-card"
 import TeamMember from "./components/team-member"
-import Footer from "./components/footer"
+
 import AnimatedText from "./components/animated-text"
 import PageTransition from "./components/page-transition"
 

@@ -3,7 +3,7 @@
 import Image from "next/image"
 import AnimatedText from "../components/animated-text"
 import { motion } from "framer-motion"
-import Footer from "../components/footer"
+
 import PageTransition from "../components/page-transition"
 
 export default function AboutPage() {
