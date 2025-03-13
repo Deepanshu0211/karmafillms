@@ -8,8 +8,9 @@ import { Textarea } from "../components/ui/textarea"
 import { Mail, MapPin, Phone } from "lucide-react"
 import AnimatedText from "../components/animated-text"
 import PageTransition from "../components/page-transition"
-import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({

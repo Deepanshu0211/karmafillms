@@ -6,8 +6,9 @@ import ProjectCategory from "../components/project-category"
 import ProjectModal from "../components/project-modal"
 import AnimatedText from "../components/animated-text"
 import PageTransition from "../components/page-transition"
-import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+
 // Project categories and their content
 const categories = [
   {
