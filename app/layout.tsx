@@ -10,7 +10,7 @@ import LoadingScreen from "./components/loading-screen"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Karma Film | Creative Content Agency",
+  title: "Karma Film ",
   description: "We craft compelling visual narratives that captivate audiences and elevate brands.",
 }
 
