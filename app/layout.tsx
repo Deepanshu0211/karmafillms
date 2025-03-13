@@ -2,8 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Suspense } from "react"
 import { ThemeProvider } from "./components/theme-provider"
-import Navbar from "./navbar";
-import Footer from "./footer";
+import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
 
 import CustomCursor from "./components/custom-cursor"
 import LoadingScreen from "./components/loading-screen"
