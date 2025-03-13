@@ -66,7 +66,7 @@ export default function ContactPage() {
                 <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="space-y-8">
                   <div>
                     <h2 className="text-3xl font-bold mb-6">Contact Information</h2>
-                    <p className="text-body mb-8">Reach out to us for inquiries, collaborations, or just to say hello. We're always excited to connect with new clients and partners.</p>
+                    <p className="text-body mb-8">Reach out to us for inquiries, collaborations, or just to say hello. We&apos;re always excited to connect with new clients and partners.</p>
                   </div>
 
                   <div className="space-y-6">

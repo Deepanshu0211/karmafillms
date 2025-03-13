@@ -71,17 +71,17 @@ export default function CustomCursor() {
         className={`custom-cursor ${isHovering ? "hover" : ""}`}
         style={{
           backgroundColor: cursorColor,
-          mixBlendMode: "difference", // 🔥 Always inverted
+          mixBlendMode: "exclusion", // 🔥 Always inverted
         }}
         animate={{
           x: position.x - 20,
           y: position.y - 20,
-          opacity: isVisible ? 0.5 : 0,
+          opacity: isVisible ? 1 : 0,
           scale: isHovering ? 1.5 : 1,
         }}
         transition={{
           type: "spring",
-          damping: 30,
+          damping: 10,
           stiffness: 200,
           mass: 0.5,
         }}
@@ -90,7 +90,7 @@ export default function CustomCursor() {
         className="custom-cursor-dot"
         style={{
           backgroundColor: cursorColor,
-          mixBlendMode: "difference",
+          mixBlendMode: "exclusion",
         }}
         animate={{
           x: dotPosition.x - 4,
