@@ -3,9 +3,8 @@
 import Image from "next/image"
 import AnimatedText from "../components/animated-text"
 import { motion } from "framer-motion"
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
-
+import Navbar from "../components/navbar"
+import Footer from "../components/footer"
 import PageTransition from "../components/page-transition"
 
 export default function AboutPage() {
@@ -61,11 +60,11 @@ export default function AboutPage() {
                       visual content that not only looks beautiful but also tells meaningful stories.
                     </p>
                     <p>
-                      Over the years, we've evolved into a full-service content creation agency, working with brands and
+                      Over the years, we&apos;ve evolved into a full-service content creation agency, working with brands and
                       creators across industries to develop compelling visual narratives.
                     </p>
                     <p>
-                      Our name "Karma" reflects our philosophy that great content creates a positive cycle—good content
+                      Our name &quot;Karma&quot; reflects our philosophy that great content creates a positive cycle—good content
                       leads to engaged audiences, which leads to growth and more opportunities to create impactful work.
                     </p>
                   </div>
@@ -108,7 +107,7 @@ export default function AboutPage() {
               >
                 <h3 className="text-xl font-bold mb-4">Create</h3>
                 <p className="text-body">
-                  Our creative process combines technical expertise with artistic vision. We craft content that's not
+                  Our creative process combines technical expertise with artistic vision. We craft content that&apos;s not
                   only visually stunning but strategically effective.
                 </p>
               </motion.div>
@@ -123,7 +122,7 @@ export default function AboutPage() {
               >
                 <h3 className="text-xl font-bold mb-4">Deliver</h3>
                 <p className="text-body">
-                  We're committed to excellence in execution, delivering polished content on time and on budget, with
+                  We&apos;re committed to excellence in execution, delivering polished content on time and on budget, with
                   attention to every detail.
                 </p>
               </motion.div>
@@ -143,7 +142,7 @@ export default function AboutPage() {
                       <strong>Creativity:</strong> We push boundaries and explore new approaches to visual storytelling.
                     </p>
                     <p className="card-box p-4">
-                      <strong>Quality:</strong> We're committed to excellence in every frame, pixel, and interaction.
+                      <strong>Quality:</strong> We&apos;re committed to excellence in every frame, pixel, and interaction.
                     </p>
                     <p className="card-box p-4">
                       <strong>Collaboration:</strong> We believe the best work happens through partnership with our

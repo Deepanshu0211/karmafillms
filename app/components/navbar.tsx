@@ -59,8 +59,8 @@ export default function Navbar() {
       opacity: 1,
       transition: {
         type: "spring",
-        stiffness: 260,
-        damping: 0,
+        stiffness: 60,
+        damping: 20,
         duration: 0.3,
       },
     },
