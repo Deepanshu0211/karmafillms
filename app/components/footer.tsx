@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Instagram, Twitter, Youtube, Facebook, Mail } from "lucide-react"
+import { Instagram, Twitter, Youtube, Facebook, Mail, Linkedin, Phone } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -12,7 +12,7 @@ export default function Footer() {
               <p className="text-sm text-body max-w-xs">
                 We craft compelling visual narratives that captivate audiences and elevate brands.
               </p>
-              <div className="flex space-x-4">
+              <div className="flex space-x-1">
                 <Link href="#" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
                   <Instagram className="h-5 w-5" />
                   <span className="sr-only">Instagram</span>
@@ -26,8 +26,8 @@ export default function Footer() {
                   <span className="sr-only">YouTube</span>
                 </Link>
                 <Link href="#" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
-                  <Facebook className="h-5 w-5" />
-                  <span className="sr-only">Facebook</span>
+                  <Linkedin className="h-5 w-5" />
+                  <span className="sr-only">Linkedin</span>
                 </Link>
               </div>
             </div>
@@ -59,6 +59,19 @@ export default function Footer() {
                   <Link href="/projects" className="text-body hover:text-foreground transition-colors block">
                     Brand Identity
                   </Link>
+                  
+                </li>
+                <li className="card-box p-2 px-4">
+                  <Link href="/projects" className="text-body hover:text-foreground transition-colors block">
+                    3D Animation
+                  </Link>
+                  
+                </li>
+                <li className="card-box p-2 px-4">
+                  <Link href="/projects" className="text-body hover:text-foreground transition-colors block">
+                    Rendering Services
+                  </Link>
+                  
                 </li>
               </ul>
             </div>
@@ -97,12 +110,9 @@ export default function Footer() {
                   <Mail className="h-4 w-4" />
                   hello@karmafilm.com
                 </li>
-                <li className="text-body card-box p-3">
-                  123 Creative Avenue
-                  <br />
-                  Suite 456
-                  <br />
-                  Los Angeles, CA 90001
+                <li className="flex items-center gap-2 text-body card-box p-3">
+                  <Phone className="h-4 w-4" />
+                  74374734724
                 </li>
               </ul>
             </div>
@@ -112,26 +122,7 @@ export default function Footer() {
         <div className="card-box p-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-body">&copy; {new Date().getFullYear()} Karma Film. All rights reserved.</p>
-            <div className="flex gap-6">
-              <Link
-                href="#"
-                className="text-xs text-body hover:text-foreground transition-colors glass px-3 py-1 rounded-full"
-              >
-                Terms of Service
-              </Link>
-              <Link
-                href="#"
-                className="text-xs text-body hover:text-foreground transition-colors glass px-3 py-1 rounded-full"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="#"
-                className="text-xs text-body hover:text-foreground transition-colors glass px-3 py-1 rounded-full"
-              >
-                Cookie Policy
-              </Link>
-            </div>
+           
           </div>
         </div>
       </div>

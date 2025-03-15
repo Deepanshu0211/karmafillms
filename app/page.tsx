@@ -105,9 +105,9 @@ export default function Home() {
                 delay={0.1}
               />
               <TeamMember
-                name="Jamie Chen"
+                name="Yash Singh"
                 role="Lead Editor"
-                image="/placeholder.svg?height=400&width=400"
+                image="/assets/yash-singh.png"
                 delay={0.2}
               />
               <TeamMember

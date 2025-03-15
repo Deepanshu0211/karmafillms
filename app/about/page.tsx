@@ -13,13 +13,13 @@ export default function AboutPage() {
         <Navbar />
       <main className="flex min-h-screen flex-col">
         {/* Hero Section */}
-        <section className="relative flex flex-col items-center justify-center min-h-[60vh] px-4 overflow-hidden">
+        <section className="relative flex flex-col items-center justify-center min-h-[60vh] px-4 pt-10 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-background/10 to-background/80 backdrop-blur-sm z-0"></div>
-          <div className="container relative z-10 flex flex-col items-center text-center gap-8 max-w-5xl">
-            <div className="card-box p-10">
+          <div className="container relative z-10 flex flex-col items-center text-center px-1 gap-8 max-w-9xl">
+            <div className="card-box px-10 py-8">
               <AnimatedText
                 text="About Karma Film"
-                className="text-4xl md:text-6xl font-bold tracking-tight"
+                className="text-4xl md:text-6  font-bold tracking-tight px-10"
                 direction="down"
               />
               <AnimatedText
@@ -34,8 +34,8 @@ export default function AboutPage() {
 
         {/* Our Story */}
         <section className="section-container">
-          <div className="container max-w-5xl">
-            <div className="card-box p-8">
+          <div className="container px-1 max-w-5xl">
+            <div className="card-box py-8 px-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
@@ -76,7 +76,7 @@ export default function AboutPage() {
 
         {/* Our Approach */}
         <section className="section-container bg-muted/50">
-          <div className="container max-w-5xl">
+          <div className="container px-1 max-w-5xl">
             <div className="card-box p-8 mb-12 text-center">
               <AnimatedText text="Our Approach" className="text-3xl md:text-4xl font-bold" direction="up" />
             </div>
@@ -132,12 +132,12 @@ export default function AboutPage() {
 
         {/* Values */}
         <section className="section-container">
-          <div className="container max-w-5xl">
+          <div className="container px-1 max-w-5xl">
             <div className="card-box p-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
                   <AnimatedText text="Our Values" className="text-3xl font-bold mb-6" direction="left" />
-                  <div className="space-y-4 text-body">
+                  <div className="space-y-4 px-1 text-body">
                     <p className="card-box p-4">
                       <strong>Creativity:</strong> We push boundaries and explore new approaches to visual storytelling.
                     </p>
