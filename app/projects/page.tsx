@@ -143,8 +143,8 @@ const openModal = (category: Category) => {
         <Navbar />
       <main className="flex min-h-screen flex-col py-24 px-4">
         <div className="container">
-          <div className="card-box p-8 mb-10 text-center">
-            <AnimatedText text="Our Projects" className="text-3xl md:text-5xl font-bold mb-4" direction="down" />
+          <div className="card-box px-1 p-8 mb-10 text-center">
+            <AnimatedText text="Our&nbsp;Projects" className="text-3xl md:text-5xl font-bold mb-4" direction="down" />
             <AnimatedText
               text="Explore our work across different categories"
               className="text-xl text-body"

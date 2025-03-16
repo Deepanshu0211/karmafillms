@@ -19,7 +19,7 @@ export default function Home() {
           <div className="container relative z-10 flex flex-col items-center text-center gap-8 max-w-5xl">
             <div className="card-box p-8 md:p-12">
               <AnimatedText
-                text="Transforming Visions into Visual Stories"
+                text="Transforming Visions into Visual&nbsp;Stories"
                 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight"
                 direction="down"
               />
@@ -47,7 +47,7 @@ export default function Home() {
         {/* Services Section */}
         <section className="section-container bg-muted/50">
           <div className="container">
-            <div className="card-box p-8 mb-16 text-center">
+            <div className="card-box px-1 p-8 mb-16 text-center">
               <AnimatedText text="Our Services" className="text-3xl md:text-4xl font-bold" direction="left" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -128,10 +128,10 @@ export default function Home() {
 
         {/* CTA Section */}
         <section className="section-container bg-primary/5 backdrop-blur-sm">
-          <div className="container max-w-4xl">
+          <div className="container px-1 max-w-4xl">
             <div className="card-box p-10 text-center">
               <AnimatedText
-                text="Ready to transform your vision?"
+                text="Ready&nbsp;to transform your vision?"
                 className="text-3xl md:text-4xl font-bold mb-6"
                 direction="up"
               />

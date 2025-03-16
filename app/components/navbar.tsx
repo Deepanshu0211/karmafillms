@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu } from "lucide-react"
 import { Button } from "./ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "./ui/sheet"
 import { ThemeToggle } from "./theme-toggle"
@@ -15,7 +15,6 @@ export default function Navbar() {
   const [visible, setVisible] = useState(true)
   const pathname = usePathname()
   const sheetTriggerRef = useRef(null)
-  const closeButtonRef = useRef(null)
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -28,21 +27,8 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
 
-      // Determine if scrolled down from top
-      if (currentScrollY > 10) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
-
-      // Determine scroll direction for hiding/showing
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down
-        setVisible(false)
-      } else {
-        // Scrolling up
-        setVisible(true)
-      }
+      setIsScrolled(currentScrollY > 10)
+      setVisible(currentScrollY < lastScrollY || currentScrollY < 100)
 
       setLastScrollY(currentScrollY)
     }
@@ -51,24 +37,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [lastScrollY])
 
-  // Animation variants
   const navVariants = {
     hidden: { y: -100, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 60,
-        damping: 20,
-        duration: 0.3,
-      },
-    },
-    exit: {
-      y: -100,
-      opacity: 0,
-      transition: { duration: 0.2 },
-    },
+    visible: { y: 0, opacity: 1, transition: { type: "tween", ease: "easeOut", duration: 0.05 } },
+    exit: { y: -100, opacity: 0, transition: { duration: 0.05 } },
   }
 
   return (
@@ -121,21 +93,10 @@ export default function Navbar() {
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[300px] sm:w-[400px] glass border-l">
                   <div className="flex flex-col h-full">
-                    <div className="flex items-center justify-between mb-8">
+                    <div className="mb-8">
                       <Link href="/" className="font-bold text-xl">
                         Karma Film
                       </Link>
-                      <SheetClose asChild>
-                        <Button
-                          ref={closeButtonRef}
-                          variant="outline"
-                          size="icon"
-                          className="rounded-full glass border-primary/20"
-                        >
-                          <X className="h-5 w-5" />
-                          <span className="sr-only">Close menu</span>
-                        </Button>
-                      </SheetClose>
                     </div>
                     <nav className="flex flex-col space-y-6">
                       {navLinks.map((link) => (
@@ -168,4 +129,3 @@ export default function Navbar() {
     </AnimatePresence>
   )
 }
-

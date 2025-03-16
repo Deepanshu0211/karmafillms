@@ -18,7 +18,7 @@ export default function AboutPage() {
           <div className="container relative z-10 flex flex-col items-center text-center px-1 gap-8 max-w-9xl">
             <div className="card-box px-10 py-8">
               <AnimatedText
-                text="About Karma Film"
+                text="About Karma&nbsp;Film"
                 className="text-4xl md:text-6  font-bold tracking-tight px-10"
                 direction="down"
               />
