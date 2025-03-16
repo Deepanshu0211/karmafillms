@@ -1,34 +1,36 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Suspense } from "react"
-import { ThemeProvider } from "./components/theme-provider"
+"use client"; // 👈 Make this a Client Component
 
-import CustomCursor from "./components/custom-cursor"
-import LoadingScreen from "./components/loading-screen"
-import "./globals.css"
-
-export const metadata: Metadata = {
-  title: "Karma Film | Creative Content Agency",
-  description: "We craft compelling visual narratives that captivate audiences and elevate brands.",
-}
+import { Suspense, useState, useEffect } from "react";
+import { ThemeProvider } from "./components/theme-provider";
+import CustomCursor from "./components/custom-cursor";
+import LoadingScreen from "./components/loading-screen";
+import "./globals.css";
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate a loading delay
+    const timer = setTimeout(() => setIsLoaded(true), 3000); // Adjust time as needed
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-background font-gilroy antialiased">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           <Suspense fallback={<LoadingScreen />}>
-            <CustomCursor />
-            
-            {children}
+            {!isLoaded ? <LoadingScreen /> : (
+              <>
+                <CustomCursor />
+                {children}
+              </>
+            )}
           </Suspense>
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
-
