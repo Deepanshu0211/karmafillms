@@ -97,30 +97,36 @@ export default function Home() {
             <div className="card-box p-8 mb-16 text-center">
               <AnimatedText text="Meet Our Team" className="text-3xl md:text-4xl font-bold" direction="right" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
               <TeamMember
-                name="Alex Morgan"
-                role="Creative Director"
+                name="Vivek Ahir"
+                role="Brand Strategist & Designer"
                 image="/placeholder.svg?height=400&width=400"
                 delay={0.1}
               />
               <TeamMember
-                name="Yash Singh"
-                role="Lead Editor"
+                name="Rahul Patel"
+                role="Creative Director"
                 image="/assets/yash-singh.png"
                 delay={0.2}
               />
               <TeamMember
-                name="Sam Wilson"
-                role="Motion Designer"
-                image="/placeholder.svg?height=400&width=400"
+                name="Deepanshu Ahir"
+                role="Developer"
+                image="/assets/yash-singh.png"
                 delay={0.3}
               />
               <TeamMember
-                name="Taylor Reed"
-                role="Content Strategist"
+                name="Yash Singh"
+                role="Video Editing & Designing"
                 image="/placeholder.svg?height=400&width=400"
                 delay={0.4}
+              />
+              <TeamMember
+                name="Ehtisham Sageer"
+                role="Junior Designer"
+                image="/placeholder.svg?height=400&width=400"
+                delay={0.5}
               />
             </div>
           </div>
