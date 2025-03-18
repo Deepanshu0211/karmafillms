@@ -58,16 +58,21 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="relative p-8">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute top-6 right-6 rounded-full glass"
-              onClick={onClose}
-              data-cursor="button"
-            >
-              <X className="h-5 w-5" />
-              <span className="sr-only">Close</span>
-            </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute top-6 right-6 h-10 w-10 flex items-center justify-center rounded-full glass z-50"
+            style={{ lineHeight: 1 }} // Ensures perfect centering
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
+            data-cursor="button"
+          >
+            <X className="h-6 w-6" />
+            <span className="sr-only">Close</span>
+          </Button>
+
 
             <div className="mb-10 card-box p-6">
               <h2 className="text-2xl font-bold mb-4">{content.title}</h2>

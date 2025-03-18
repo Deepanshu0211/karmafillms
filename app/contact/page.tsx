@@ -71,7 +71,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="font-medium -ml-4">Email</h3>
-                        <p className="text-body text-xs sm:text-sm -ml-4">hello@karmafilm.com</p>
+                        <p className="text-body text-xs sm:text-sm -ml-4">karmaafilms@gmail.com</p>
                       </div>
                     </div>
 
@@ -81,9 +81,19 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="font-medium -ml-4">Phone</h3>
-                        <p className="text-body text-xs sm:text-sm -ml-4">+1 (555) 123-4567</p>
+                        <p className="text-body text-xs sm:text-sm -ml-4">+91 9033912081</p>
                       </div>
                     </div>
+                    <div className="flex items-start gap-4 card-box p-4">
+                      <div className="glass p-3 rounded-full">
+                        <Phone className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-medium -ml-4">Phone</h3>
+                        <p className="text-body text-xs sm:text-sm -ml-4">+91 8758395535</p>
+                      </div>
+                    </div>
+
 
                     {/* <div className="flex items-start gap-4 card-box p-4"> */}
                       {/* <div className="glass p-3 rounded-full">

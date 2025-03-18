@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="card-box p-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-4">
-              <h3 className="text-lg font-bold">Karma Film</h3>
+              <h3 className="text-lg font-bold">Karmā Film</h3>
               <p className="text-sm text-body max-w-xs">
                 We craft compelling visual narratives that captivate audiences and elevate brands.
               </p>
@@ -95,11 +95,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 
-                <li className="card-box p-2 px-4">
-                  <Link href="#" className="text-body hover:text-foreground transition-colors block">
-                    Privacy Policy
-                  </Link>
-                </li>
+               
               </ul>
             </div>
 
@@ -108,11 +104,15 @@ export default function Footer() {
               <ul className="space-y-2 text-sm">
                 <li className="flex items-center gap-2 text-body card-box p-3">
                   <Mail className="h-4 w-4" />
-                  hello@karmafilm.com
+                  karmaafilms@gmail.com
                 </li>
                 <li className="flex items-center gap-2 text-body card-box p-3">
                   <Phone className="h-4 w-4" />
-                  74374734724
+                  9033912081
+                </li>
+                <li className="flex items-center gap-2 text-body card-box p-3">
+                  <Phone className="h-4 w-4" />
+                  8758395535
                 </li>
               </ul>
             </div>

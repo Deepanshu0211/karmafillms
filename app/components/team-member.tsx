@@ -33,34 +33,7 @@ export default function TeamMember({ name, role, image, delay = 0 }: TeamMemberP
             height={400}
             className="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
-            <div className="flex gap-4">
-              <a
-                href="#"
-                className="text-white hover:text-primary transition-colors glass p-2 rounded-full"
-                data-cursor="link"
-              >
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </a>
-              <a
-                href="#"
-                className="text-white hover:text-primary transition-colors glass p-2 rounded-full"
-                data-cursor="link"
-              >
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </a>
-              <a
-                href="#"
-                className="text-white hover:text-primary transition-colors glass p-2 rounded-full"
-                data-cursor="link"
-              >
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </a>
-            </div>
-          </div>
+         
         </div>
       </div>
       <div className="text-center card-box py-3 px-4">

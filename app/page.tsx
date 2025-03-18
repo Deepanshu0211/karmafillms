@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Button } from "./components/ui/button"
@@ -37,11 +39,15 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <div className="absolute bottom-8 left-0 right-0 flex justify-center">
-            <div className="animate-bounce glass p-3 rounded-full">
+          <div 
+            className="absolute bottom-8 left-0 right-0 flex justify-center"
+            onClick={() => window.scrollBy({ top: 700, behavior: "smooth" })}
+          >
+            <div className="animate-bounce glass p-3 rounded-full cursor-pointer">
               <ArrowRight className="h-6 w-6 rotate-90" />
             </div>
           </div>
+
         </section>
 
         {/* Services Section */}
@@ -90,14 +96,14 @@ export default function Home() {
             </div>
           </div>
         </section>
-
+        {/* left to right in phone */}
         {/* Team Section */}
         <section className="section-container">
           <div className="container">
             <div className="card-box p-8 mb-16 text-center">
-              <AnimatedText text="Meet Our Team" className="text-3xl md:text-4xl font-bold" direction="right" />
+              <AnimatedText text="Meet Our Team" className="text-3xl md:text-4xl font-bold" direction="up" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-0 lg:grid-cols-5 gap-8">
               <TeamMember
                 name="Vivek Ahir"
                 role="Brand Strategist & Designer"
@@ -118,7 +124,7 @@ export default function Home() {
               />
               <TeamMember
                 name="Yash Singh"
-                role="Video Editing & Designing"
+                role="3D visual & Editor"
                 image="/placeholder.svg?height=400&width=400"
                 delay={0.4}
               />

@@ -57,7 +57,7 @@ export default function Navbar() {
         >
           <div className="container flex items-center justify-between">
             <Link href="/" className="font-bold text-xl">
-              Karma Film
+             Karmā Film
             </Link>
 
             {/* Desktop Navigation */}

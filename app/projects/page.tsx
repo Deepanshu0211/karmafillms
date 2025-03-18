@@ -163,11 +163,10 @@ const openModal = (category: Category) => {
               <ProjectCategory
                 key={category.id}
                 title={category.title}
-                description={category.description}
+
                 image={category.image}
                 onClick={() => openModal(category)}
-                delay={index * 0.1}
-              />
+                delay={index * 0.1} description={""}              />
             ))}
           </motion.div>
         </div>
