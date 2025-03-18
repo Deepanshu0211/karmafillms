@@ -13,19 +13,19 @@ export default function Footer() {
                 We craft compelling visual narratives that captivate audiences and elevate brands.
               </p>
               <div className="flex space-x-1">
-                <Link href="#" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
+                <Link href="https://www.youtube.com/@KarmaFilms7" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
                   <Instagram className="h-5 w-5" />
                   <span className="sr-only">Instagram</span>
+                </Link>
+                <Link href="https://www.youtube.com/channel/UCJvJ7w5Rm1Jp5v5k7Q9z5Vg" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
+                  <Youtube className="h-5 w-5" />
+                  <span className="sr-only">Youtube</span>
                 </Link>
                 <Link href="#" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
                   <Twitter className="h-5 w-5" />
                   <span className="sr-only">Twitter</span>
                 </Link>
-                <Link href="#" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
-                  <Youtube className="h-5 w-5" />
-                  <span className="sr-only">YouTube</span>
-                </Link>
-                <Link href="#" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
+                <Link href="https://www.linkedin.com/company/karmafilms7/" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
                   <Linkedin className="h-5 w-5" />
                   <span className="sr-only">Linkedin</span>
                 </Link>
@@ -108,11 +108,11 @@ export default function Footer() {
                 </li>
                 <li className="flex items-center gap-2 text-body card-box p-3">
                   <Phone className="h-4 w-4" />
-                  9033912081
+                  +91 9033912081
                 </li>
                 <li className="flex items-center gap-2 text-body card-box p-3">
                   <Phone className="h-4 w-4" />
-                  8758395535
+                  +91 8758395535
                 </li>
               </ul>
             </div>
