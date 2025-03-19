@@ -2,7 +2,6 @@
 
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Instagram, Twitter, Linkedin } from "lucide-react"
 
 interface TeamMemberProps {
   name: string
