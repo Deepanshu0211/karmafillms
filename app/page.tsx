@@ -107,31 +107,31 @@ export default function Home() {
               <TeamMember
                 name="Vivek Ahir"
                 role="Brand Strategist & Designer"
-                image="/placeholder.svg?height=400&width=400"
+                image="/assets/bihari.png"
                 delay={0.1}
               />
               <TeamMember
                 name="Rahul Patel"
                 role="Creative Director"
-                image="/assets/yash-singh.png"
+                image="/assets/rahul.png"
                 delay={0.2}
               />
               <TeamMember
                 name="Deepanshu Ahir"
                 role="Developer"
-                image="/assets/yash-singh.png"
+                image="/assets/kumar.png"
                 delay={0.3}
               />
               <TeamMember
                 name="Yash Singh"
                 role="3D visual & Editor"
-                image="/placeholder.svg?height=400&width=400"
+                image="/assets/yash-singh.png"
                 delay={0.4}
               />
               <TeamMember
                 name="Ehtisham Sageer"
                 role="Junior Designer"
-                image="/placeholder.svg?height=400&width=400"
+                image="/assets/ehtisham.png"
                 delay={0.5}
               />
             </div>
