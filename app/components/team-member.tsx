@@ -8,6 +8,7 @@ interface TeamMemberProps {
   role: string
   image: string
   delay?: number
+  className?: string
 }
 
 export default function TeamMember({ name, role, image, delay = 0 }: TeamMemberProps) {

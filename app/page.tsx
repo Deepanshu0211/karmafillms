@@ -98,46 +98,67 @@ export default function Home() {
         </section>
         {/* left to right in phone */}
         {/* Team Section */}
+      
         <section className="section-container">
           <div className="container">
             <div className="card-box p-8 mb-16 text-center">
               <AnimatedText text="Meet Our Team" className="text-3xl md:text-4xl font-bold" direction="up" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-0 lg:grid-cols-5 gap-8">
-              <TeamMember
-                name="Vivek Ahir"
-                role="Brand Strategist"
-                image="/assets/bihari.png"
-                delay={0.1}
-              />
-              <TeamMember
-                name="Rahul Patel"
-                role="Creative Director"
-                image="/assets/rahul.png"
-                delay={0.3}
-              />
-              <TeamMember
-                name="Deepanshu Ahir"
-                role="Developer"
-                image="/assets/kumar.png"
-                delay={0.5}
-              />
-              <TeamMember
-                name="Yash Singh"
-                role="3D visual & Editor"
-                image="/assets/yash-singh.png"
-                delay={0.7}
-              />
-              <TeamMember
-                name="Ehtisham Sageer"
-                role="Junior Designer"
-                image="/assets/ehtisham.png"
-                delay={0.9}
-              />
-            </div>
+            <div className="relative overflow-hidden">
+              {/* Carousel container */}
+              <div className="overflow-x-scroll snap-x snap-mandatory pb-8 hide-scrollbar">
+                <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-8 px-12">
+                 <div className="flex-shrink-0 w-[15rem] h-auto snap-center mx-4">
+                    <TeamMember
+                      name="Vivek Ahir"
+                      role="Brand Strategist"
+                      image="/assets/bihari.png"
+                      delay={0.1}
+                      className="w-full h-full transition-all duration-300"
+                    />
+                  </div>
+                  <div className="flex-shrink-0 w-[15rem] h-auto snap-center mx-4">
+                    <TeamMember
+                      name="Rahul Patel"
+                      role="Creative Director"
+                      image="/assets/rahul.png"
+                      delay={0.2}
+                      className="w-full h-full transition-all duration-300"
+                    />
+                  </div>
+                  <div className="flex-shrink-0 w-[15rem] h-auto snap-center mx-4">
+                    <TeamMember
+                      name="Deepanshu Ahir"
+                      role="Developer"
+                      image="/assets/kumar.png"
+                      delay={0.3}
+                      className="w-full h-full transition-all duration-300"
+                    />
+                  </div>
+                  <div className="flex-shrink-0 w-[15rem] h-auto snap-center mx-4">
+                    <TeamMember
+                      name="Yash Singh"
+                      role="3D visual & Editor"
+                      image="/assets/yash-singh.png"
+                      delay={0.4}
+                      className="w-full h-full transition-all duration-300"
+                    />
+                  </div>
+                  <div className="flex-shrink-0 w-[15rem] h-auto snap-center mx-4">
+                    <TeamMember
+                      name="Ehtisham Sageer"
+                      role="Junior Designer"
+                      image="/assets/ehtisham.png"
+                      delay={0.5}
+                      className="w-full h-full transition-all duration-300"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div> 
+             
           </div>
         </section>
-
         {/* CTA Section */}
         <section className="section-container bg-primary/5 backdrop-blur-sm">
           <div className="container px-1 max-w-4xl">
