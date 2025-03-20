@@ -114,25 +114,25 @@ export default function Home() {
                 name="Rahul Patel"
                 role="Creative Director"
                 image="/assets/rahul.png"
-                delay={0.2}
+                delay={0.3}
               />
               <TeamMember
                 name="Deepanshu Ahir"
                 role="Developer"
                 image="/assets/kumar.png"
-                delay={0.3}
+                delay={0.5}
               />
               <TeamMember
                 name="Yash Singh"
                 role="3D visual & Editor"
                 image="/assets/yash-singh.png"
-                delay={0.4}
+                delay={0.7}
               />
               <TeamMember
                 name="Ehtisham Sageer"
                 role="Junior Designer"
                 image="/assets/ehtisham.png"
-                delay={0.5}
+                delay={0.9}
               />
             </div>
           </div>
