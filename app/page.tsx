@@ -106,7 +106,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-0 lg:grid-cols-5 gap-8">
               <TeamMember
                 name="Vivek Ahir"
-                role="Brand Strategist & Designer"
+                role="Brand Strategist"
                 image="/assets/bihari.png"
                 delay={0.1}
               />

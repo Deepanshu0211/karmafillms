@@ -14,7 +14,7 @@ const categories = [
     id: "thumbnails",
     title: "Thumbnails",
     description: "Eye-catching thumbnails that drive engagement",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/assets/thumbnails.png",
     content: {
       title: "Thumbnail Design",
       description:
@@ -94,7 +94,7 @@ const categories = [
     id: "brandguidelines",
     title: "Brand Guidelines",
     description: "Comprehensive brand identity systems",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/assets/brand-guidelines.png",
     content: {
       title: "Brand Guidelines",
       description:

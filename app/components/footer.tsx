@@ -13,11 +13,11 @@ export default function Footer() {
                 We craft compelling visual narratives that captivate audiences and elevate brands.
               </p>
               <div className="flex space-x-1">
-                <Link href="https://www.youtube.com/@KarmaFilms7" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
+                <Link href="https://www.instagram.com/karmafilms7" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
                   <Instagram className="h-5 w-5" />
                   <span className="sr-only">Instagram</span>
                 </Link>
-                <Link href="https://www.youtube.com/channel/UCJvJ7w5Rm1Jp5v5k7Q9z5Vg" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
+                <Link href="https://www.youtube.com/@KarmaFilms7" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
                   <Youtube className="h-5 w-5" />
                   <span className="sr-only">Youtube</span>
                 </Link>
