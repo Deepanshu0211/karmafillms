@@ -20,9 +20,9 @@ const categories = [
       description:
         "Our thumbnail designs are strategically crafted to maximize click-through rates while maintaining brand consistency. We combine psychology, design principles, and platform-specific optimization to create thumbnails that stand out in crowded feeds.",
       projects: [
-        { title: "Tech Review Series", image: "/placeholder.svg?height=400&width=600" },
-        { title: "Travel Vlog Collection", image: "/placeholder.svg?height=400&width=600" },
-        { title: "Cooking Tutorial Thumbnails", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Tech Review Series", image: "/assets/t1.jpg" },
+        { title: "Travel Vlog Collection", image: "/assets/t2.jpg" },
+        { title: "Prime Roast", image: "/assets/t3.png" },
       ],
     },
   },
@@ -75,8 +75,8 @@ const categories = [
     },
   },
   {
-    id: "design",
-    title: "Design",
+    id: "3d",
+    title: "3D Works",
     description: "Creative design solutions for various media",
     image: "/assets/3d.png",
     content: {
@@ -84,9 +84,12 @@ const categories = [
       description:
         "Our design team creates visually stunning assets that enhance your brand's presence across all touchpoints. From social media graphics to UI/UX design, we deliver cohesive visual solutions that align with your brand identity.",
       projects: [
-        { title: "Social Media Kit", image: "/placeholder.svg?height=400&width=600" },
-        { title: "Website Visual Design", image: "/placeholder.svg?height=400&width=600" },
-        { title: "Marketing Collateral", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Marketing Collateral", image: "/assets/a_Dark_dining_room_with_black_marble_table_and_rich_wood_finishes.webp" },
+        { title: "Website Visual Design2", image: "/assets/IMG-20240804-WA0039.jpg" },
+        { title: "Social Media Kit", image: "/assets/1.png" },
+        { title: "Website Visual Design", image: "/assets/4-1.png" },
+        { title: "Website Visual Design2", image: "/assets/office-sofa-1.jpg" },
+        { title: "Website Visual Design2", image: "/assets/untitled.png" },
       ],
     },
   },

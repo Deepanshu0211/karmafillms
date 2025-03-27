@@ -58,56 +58,61 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="relative p-8">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute top-6 right-6 h-10 w-10 flex items-center justify-center rounded-full glass z-50"
-            style={{ lineHeight: 1 }} // Ensures perfect centering
-            onClick={(e) => {
-              e.stopPropagation();
-              onClose();
-            }}
-            data-cursor="button"
-          >
-            <X className="h-6 w-6" />
-            <span className="sr-only">Close</span>
-          </Button>
+            {/* Close Button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute top-6 right-6 h-10 w-10 flex items-center justify-center rounded-full glass z-50"
+              style={{ lineHeight: 1 }}
+              onClick={(e) => {
+                e.stopPropagation()
+                onClose()
+              }}
+              data-cursor="button"
+            >
+              <X className="h-6 w-6" />
+              <span className="sr-only">Close</span>
+            </Button>
 
-
+            {/* Modal Content */}
             <div className="mb-10 card-box p-6">
               <h2 className="text-2xl font-bold mb-4">{content.title}</h2>
               <p className="text-muted-foreground">{content.description}</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Project Cards */}
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6">
               {content.projects.map((project, index) => (
                 <motion.div
                   key={project.title}
-                  className="group card-box overflow-hidden"
+                  className="group card-box flex flex-col overflow-hidden rounded-xl shadow-lg transition-all duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)" }}
                 >
-                  <div className="relative justify-center h-[120px] overflow-hidden rounded-t-xl">
+                  {/* Image */}
+                  <div className="relative w-full h-[180px] overflow-hidden rounded-t-xl">
                     <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      width={100}  // Adjust width
-                      height={100} // Adjust height
-                      className="object-cover transition-transform duration-500 group-hover:scale-190"
+                      layout="fill"
+                      objectFit="cover"
+                      className="transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
-                  <div className="p-4">
-                    <h3 className="font-medium">{project.title}</h3>
+
+                  {/* Project Title */}
+                  <div className="h-12 flex items-center px-4 py-2">
+                    <h3 className="text-sm font-medium truncate">{project.title}</h3>
                   </div>
                 </motion.div>
               ))}
             </div>
+
           </div>
         </motion.div>
       </motion.div>
     </AnimatePresence>
   )
 }
-
