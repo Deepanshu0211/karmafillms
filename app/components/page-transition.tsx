@@ -16,7 +16,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
       transition={{
         type: "spring",
         stiffness: 260,
-        damping: 20,
+        damping: 10,
         duration: 0.3,
       }}
     >

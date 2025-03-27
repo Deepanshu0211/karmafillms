@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Button } from "./components/ui/button"
@@ -11,6 +12,65 @@ import AnimatedText from "./components/animated-text"
 import PageTransition from "./components/page-transition"
 
 export default function Home() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const dotContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    const dotContainer = dotContainerRef.current;
+    
+    if (!carousel || !dotContainer) return;
+    
+    const teamItems = carousel.querySelectorAll('.snap-center');
+    const dots = dotContainer.querySelectorAll('button');
+    
+    // Update active dot based on scroll position
+    const updateActiveDot = () => {
+      const scrollPosition = carousel.scrollLeft;
+      const itemWidth = (teamItems[0] as HTMLElement).offsetWidth + 30; // Width + margin
+      const activeIndex = Math.round(scrollPosition / itemWidth);
+      
+      dots.forEach((dot, index) => {
+        // Reset all dots
+        dot.classList.remove('w-3', 'bg-gray-500');
+        dot.classList.add('w-3', 'bg-gray-300');
+        
+        // Set active dot
+        if (index === activeIndex) {
+          dot.classList.remove('w-3', 'bg-gray-300');
+          dot.classList.add('w-3', 'bg-gray-500');
+        }
+      });
+    };
+    
+    // Scroll to item when dot is clicked
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        const itemWidth = (teamItems[0] as HTMLElement).offsetWidth + 30; // Width + margin
+        const scrollTarget = index * itemWidth;
+        
+        carousel.scrollTo({
+          left: scrollTarget,
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Listen for scroll events
+    carousel.addEventListener('scroll', updateActiveDot);
+    
+    // Initial setup
+    updateActiveDot();
+    
+    // Cleanup
+    return () => {
+      carousel.removeEventListener('scroll', updateActiveDot);
+      dots.forEach(dot => {
+        dot.removeEventListener('click', updateActiveDot);
+      });
+    };
+  }, []);
+
   return (
     <PageTransition>
       <Navbar />
@@ -47,7 +107,6 @@ export default function Home() {
               <ArrowRight className="h-6 w-6 rotate-90" />
             </div>
           </div>
-
         </section>
 
         {/* Services Section */}
@@ -96,9 +155,8 @@ export default function Home() {
             </div>
           </div>
         </section>
-        {/* left to right in phone */}
+        
         {/* Team Section */}
-      
         <section className="section-container">
           <div className="container">
             <div className="card-box p-8 mb-16 text-center">
@@ -106,9 +164,13 @@ export default function Home() {
             </div>
             <div className="relative overflow-hidden">
               {/* Carousel container */}
-              <div className="overflow-x-scroll snap-x snap-mandatory pb-8 hide-scrollbar">
-                <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-8 px-12">
-                 <div className="flex-shrink-0 w-[15rem] h-auto snap-center mx-4">
+              <div 
+                className="overflow-x-scroll snap-x snap-mandatory pb-8 hide-scrollbar" 
+                id="teamCarousel"
+                ref={carouselRef}
+              >
+                <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-2 px-[-10px]">
+                  <div className="flex-shrink-0 w-[15rem] h-auto snap-center mx-4">
                     <TeamMember
                       name="Vivek Ahir"
                       role="Brand Strategist"
@@ -155,10 +217,23 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+              
+              {/* Dot indicators - only visible on mobile */}
+              <div 
+                className="md:hidden flex justify-center mt-6 space-x-3" 
+                id="dotContainer"
+                ref={dotContainerRef}
+              >
+                <button className="h-3 w-6 rounded-full bg-gray-500 transition-all duration-300 ease-in-out focus:outline-none"></button>
+                <button className="h-3 w-3 rounded-full bg-gray-300 transition-all duration-300 ease-in-out focus:outline-none"></button>
+                <button className="h-3 w-3 rounded-full bg-gray-300 transition-all duration-300 ease-in-out focus:outline-none"></button>
+                <button className="h-3 w-3 rounded-full bg-gray-300 transition-all duration-300 ease-in-out focus:outline-none"></button>
+                <button className="h-3 w-3 rounded-full bg-gray-300 transition-all duration-300 ease-in-out focus:outline-none"></button>
+              </div>
             </div> 
-             
           </div>
         </section>
+
         {/* CTA Section */}
         <section className="section-container bg-primary/5 backdrop-blur-sm">
           <div className="container px-1 max-w-4xl">
@@ -186,4 +261,3 @@ export default function Home() {
     </PageTransition>
   )
 }
-

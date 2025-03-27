@@ -30,7 +30,7 @@ const categories = [
     id: "shortform",
     title: "Short Form",
     description: "Engaging short-form content for social platforms",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/assets/shortform.png",
     content: {
       title: "Short Form Content",
       description:
@@ -46,7 +46,7 @@ const categories = [
     id: "longform",
     title: "Long Form",
     description: "Immersive long-form video content and documentaries",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/assets/longform.png",
     content: {
       title: "Long Form Production",
       description:
@@ -62,15 +62,15 @@ const categories = [
     id: "posters",
     title: "Posters",
     description: "Striking poster designs for marketing campaigns",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/assets/posters.png",
     content: {
       title: "Poster Design",
       description:
         "Our poster designs combine visual impact with clear messaging to effectively communicate your brand's value. Whether for digital campaigns or physical displays, we create posters that capture attention and drive action.",
       projects: [
-        { title: "Event Promotion Series", image: "/placeholder.svg?height=400&width=600" },
-        { title: "Product Launch Campaign", image: "/placeholder.svg?height=400&width=600" },
-        { title: "Brand Awareness Posters", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Baby john poster", image: "/assets/Baby-john-poster.png?width=100&height=200" },
+        { title: "pushpa-Recovered", image: "/assets/pushpa-Recovered.png" }
+      
       ],
     },
   },
@@ -78,7 +78,7 @@ const categories = [
     id: "design",
     title: "Design",
     description: "Creative design solutions for various media",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/assets/3d.png",
     content: {
       title: "Visual Design",
       description:

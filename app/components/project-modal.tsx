@@ -89,12 +89,13 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)" }}
                 >
-                  <div className="relative h-48 overflow-hidden rounded-t-xl">
+                  <div className="relative justify-center h-[120px] overflow-hidden rounded-t-xl">
                     <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      width={100}  // Adjust width
+                      height={100} // Adjust height
+                      className="object-cover transition-transform duration-500 group-hover:scale-190"
                     />
                   </div>
                   <div className="p-4">
