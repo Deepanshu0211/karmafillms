@@ -1,25 +1,31 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
 import { Button } from "./ui/button"
+import ImageModal from "./ImageModal" // Import ImageModal
+
+interface Project {
+  title: string
+  image: string
+}
+
+interface CategoryContent {
+  title: string
+  description: string
+  projects: Project[]
+}
 
 interface ProjectModalProps {
-  content: {
-    title: string
-    description: string
-    projects: {
-      title: string
-      image: string
-    }[]
-  }
+  content: CategoryContent
   onClose: () => void
 }
 
 export default function ProjectModal({ content, onClose }: ProjectModalProps) {
-  // Prevent body scroll when modal is open
+  const [selectedFile, setSelectedFile] = useState<string | null>(null)
+
   useEffect(() => {
     document.body.style.overflow = "hidden"
     return () => {
@@ -27,11 +33,14 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
     }
   }, [])
 
-  // Close modal when escape key is pressed
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        onClose()
+        if (selectedFile) {
+          setSelectedFile(null) // Close image modal first
+        } else {
+          onClose()
+        }
       }
     }
 
@@ -39,7 +48,7 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
     return () => {
       window.removeEventListener("keydown", handleEscape)
     }
-  }, [onClose])
+  }, [selectedFile, onClose])
 
   return (
     <AnimatePresence>
@@ -58,20 +67,16 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="relative p-8">
-            {/* Close Button */}
             <Button
               variant="ghost"
               size="icon"
               className="absolute top-6 right-6 h-10 w-10 flex items-center justify-center rounded-full glass z-50"
-              style={{ lineHeight: 1 }}
               onClick={(e) => {
                 e.stopPropagation()
                 onClose()
               }}
-              data-cursor="button"
             >
               <X className="h-6 w-6" />
-              <span className="sr-only">Close</span>
             </Button>
 
             {/* Modal Content */}
@@ -85,11 +90,12 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
               {content.projects.map((project, index) => (
                 <motion.div
                   key={project.title}
-                  className="group card-box flex flex-col overflow-hidden rounded-xl shadow-lg transition-all duration-300"
+                  className="group card-box flex flex-col overflow-hidden rounded-xl shadow-lg transition-all duration-300 cursor-pointer"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)" }}
+                  onClick={() => setSelectedFile(project.image)}
                 >
                   {/* Image */}
                   <div className="relative w-full h-[180px] overflow-hidden rounded-t-xl">
@@ -113,6 +119,9 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
           </div>
         </motion.div>
       </motion.div>
+
+      {/* Image/PDF/Video Modal */}
+      {selectedFile && <ImageModal fileUrl={selectedFile} onClose={() => setSelectedFile(null)} />}
     </AnimatePresence>
   )
 }
