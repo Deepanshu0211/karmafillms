@@ -9,7 +9,8 @@ import ImageModal from "./ImageModal" // Import ImageModal
 
 interface Project {
   title: string
-  image: string
+  image?: string
+  file?: string
 }
 
 interface CategoryContent {
@@ -95,17 +96,25 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)" }}
-                  onClick={() => setSelectedFile(project.image)}
+                  onClick={() => setSelectedFile(project.file || project.image || "")}
                 >
-                  {/* Image */}
+                  {/* Image or PDF Thumbnail */}
                   <div className="relative w-full h-[180px] overflow-hidden rounded-t-xl">
-                    <Image
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      layout="fill"
-                      objectFit="cover"
-                      className="transition-transform duration-500 group-hover:scale-110"
-                    />
+                    {project.file ? (
+                      <iframe
+                        src={`${project.file}#page=1&toolbar=0&navpanes=0&scrollbar=0`}
+                        className="w-full h-full object-cover"
+                        title={project.title}
+                      />
+                    ) : (
+                      <Image
+                        src={project.image || "/placeholder.svg"}
+                        alt={project.title}
+                        layout="fill"
+                        objectFit="cover"
+                        className="transition-transform duration-500 group-hover:scale-110"
+                      />
+                    )}
                   </div>
 
                   {/* Project Title */}
@@ -115,12 +124,11 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
                 </motion.div>
               ))}
             </div>
-
           </div>
         </motion.div>
       </motion.div>
 
-      {/* Image/PDF/Video Modal */}
+      {/* Image/PDF Modal */}
       {selectedFile && <ImageModal fileUrl={selectedFile} onClose={() => setSelectedFile(null)} />}
     </AnimatePresence>
   )

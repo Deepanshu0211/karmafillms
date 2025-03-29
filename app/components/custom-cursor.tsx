@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { useTheme } from "next-themes"
 
 export default function CustomCursor() {
-  const { theme } = useTheme() // 🔥 Get current theme (light/dark)
+  const { theme } = useTheme()
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [dotPosition, setDotPosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
@@ -62,7 +62,7 @@ export default function CustomCursor() {
 
   if (isMobile) return null
 
-  // 🔥 Auto-invert based on theme
+  // Cursor color auto-inverts with "difference"
   const cursorColor = theme === "light" ? "black" : "white"
 
   return (
@@ -71,7 +71,13 @@ export default function CustomCursor() {
         className={`custom-cursor ${isHovering ? "hover" : ""}`}
         style={{
           backgroundColor: cursorColor,
-          mixBlendMode: "exclusion", // 🔥 Always inverted
+          width: "40px",
+          height: "40px",
+          borderRadius: "50%",
+          position: "fixed",
+          pointerEvents: "none",
+          zIndex: 9999,
+          mixBlendMode: "difference", // 🔥 Always contrasts with background
         }}
         animate={{
           x: position.x - 20,
@@ -90,7 +96,13 @@ export default function CustomCursor() {
         className="custom-cursor-dot"
         style={{
           backgroundColor: cursorColor,
-          mixBlendMode: "exclusion",
+          width: "8px",
+          height: "8px",
+          borderRadius: "50%",
+          position: "fixed",
+          pointerEvents: "none",
+          zIndex: 9999,
+          mixBlendMode: "difference",
         }}
         animate={{
           x: dotPosition.x - 4,
@@ -107,4 +119,3 @@ export default function CustomCursor() {
     </>
   )
 }
-

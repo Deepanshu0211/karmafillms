@@ -103,9 +103,9 @@ const categories = [
       description:
         "We develop comprehensive brand guidelines that ensure consistency across all platforms and touchpoints. Our brand systems include logo usage, typography, color palettes, imagery style, and voice guidelines to maintain a cohesive brand experience.",
       projects: [
-        { title: "Startup Brand System", image: "/placeholder.svg?height=400&width=600" },
-        { title: "Brand Refresh Guidelines", image: "/placeholder.svg?height=400&width=600" },
-        { title: "Multi-Platform Brand Guide", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Startup Brand System", image: "/assets/pdf1.png", file: "/assets/Acrements-Brand-Guideline.pdf" },
+        { title: "Brand Refresh Guidelines", image: "/placeholder.svg?height=400&width=600", file:"/assets/branding-tactics-project.pdf" },
+        { title: "Multi-Platform Brand Guide", image: "/placeholder.svg?height=400&width=600", file:"/assets/ivory-nepal-pitch-deck1.pdf" },
       ],
     },
   },

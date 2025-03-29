@@ -94,17 +94,17 @@ export default function Navbar() {
                 <SheetContent side="right" className="w-[300px] sm:w-[400px] glass border-l">
                   <div className="flex flex-col h-full">
                     <div className="mb-8">
-                      <Link href="/" className="font-bold text-xl">
+                      <Link href="/" className="font-bold text-xl text-white">
                         Karma Film
                       </Link>
                     </div>
-                    <nav className="flex flex-col space-y-6">
+                    <nav className="flex flex-col space-y-6 text-white">
                       {navLinks.map((link) => (
                         <SheetClose asChild key={link.href}>
                           <Link
                             href={link.href}
-                            className={`text-lg font-medium transition-colors hover:text-primary ${
-                              pathname === link.href ? "text-primary font-semibold" : "text-body hover:text-primary"
+                            className={`text-lg font-medium transition-colors hover:text-gray-300 ${
+                              pathname === link.href ? "text-gray-300 font-semibold" : "text-white hover:text-gray-300"
                             }`}
                           >
                             {link.label}
@@ -114,13 +114,14 @@ export default function Navbar() {
                     </nav>
                     <div className="mt-auto pt-8">
                       <SheetClose asChild>
-                        <Button asChild className="w-full rounded-xl" size="lg">
+                        <Button asChild className="w-full rounded-xl text-white" size="lg">
                           <Link href="/contact">Get in Touch</Link>
                         </Button>
                       </SheetClose>
                     </div>
                   </div>
                 </SheetContent>
+
               </Sheet>
             </div>
           </div>

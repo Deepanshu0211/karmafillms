@@ -15,23 +15,24 @@ export default function ImageModal({ fileUrl, onClose }: ImageModalProps) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-lg"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
     >
       <motion.div
-        className="relative bg-white p-4 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-auto"
+        className="relative p-6 rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-auto bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-800 text-black dark:text-white"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Close Button */}
         <Button
           variant="ghost"
           size="icon"
-          className="absolute top-2 right-2"
+          className="absolute top-2 right-2 dark:text-white text-black"
           onClick={onClose}
         >
           <X className="h-6 w-6" />
@@ -39,22 +40,26 @@ export default function ImageModal({ fileUrl, onClose }: ImageModalProps) {
 
         {/* Display Image */}
         {!(isVideo || isPdf) && (
-          <img src={fileUrl} alt="Preview" className="w-full max-h-[80vh] object-contain rounded-lg" />
+          <img
+            src={fileUrl}
+            alt="Preview"
+            className="w-full max-h-[80vh] object-contain rounded-lg"
+          />
         )}
 
         {/* Display Video */}
         {isVideo && (
-          <video controls className="w-full max-h-[80vh]">
+          <video controls className="w-full max-h-[80vh] rounded-lg">
             <source src={fileUrl} />
             Your browser does not support the video tag.
           </video>
         )}
 
-        {/* Display PDF */}
+        {/* Display PDF without toolbar/download */}
         {isPdf && (
           <iframe
-            src={fileUrl}
-            className="w-full h-[80vh]"
+            src={`${fileUrl}#toolbar=0&navpanes=0&scrollbar=0`}
+            className="w-full h-[80vh] rounded-lg border border-white/30 dark:border-gray-800"
             title="PDF Viewer"
           />
         )}
