@@ -45,7 +45,7 @@ export default function AboutPage() {
                   className="rounded-xl overflow-hidden"
                 >
                   <Image
-                    src="/placeholder.svg?height=600&width=600"
+                    src="/assets/about-brand.png"
                     alt="Karma Film team at work"
                     width={600}
                     height={600}
@@ -161,7 +161,7 @@ export default function AboutPage() {
                   className="rounded-xl overflow-hidden"
                 >
                   <Image
-                    src="/placeholder.svg?height=600&width=600"
+                    src="/assets/Our-values.png"
                     alt="Karma Film creative process"
                     width={600}
                     height={600}

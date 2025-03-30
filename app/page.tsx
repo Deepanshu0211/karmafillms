@@ -165,7 +165,7 @@ export default function Home() {
             <div className="relative overflow-hidden">
               {/* Carousel container */}
               <div 
-                className="overflow-x-scroll snap-x snap-mandatory pb-8 hide-scrollbar" 
+                className="overflow-x-scroll snap-x snap-proximity pb-8 hide-scrollbar scroll-smooth" 
                 id="teamCarousel"
                 ref={carouselRef}
               >
@@ -224,7 +224,7 @@ export default function Home() {
                 id="dotContainer"
                 ref={dotContainerRef}
               >
-                <button className="h-3 w-6 rounded-full bg-gray-500 transition-all duration-300 ease-in-out focus:outline-none"></button>
+                <button className="h-3 w-3 rounded-full bg-gray-500 transition-all duration-300 ease-in-out focus:outline-none"></button>
                 <button className="h-3 w-3 rounded-full bg-gray-300 transition-all duration-300 ease-in-out focus:outline-none"></button>
                 <button className="h-3 w-3 rounded-full bg-gray-300 transition-all duration-300 ease-in-out focus:outline-none"></button>
                 <button className="h-3 w-3 rounded-full bg-gray-300 transition-all duration-300 ease-in-out focus:outline-none"></button>
