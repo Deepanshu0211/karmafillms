@@ -33,7 +33,7 @@ export default function AnimatedText({ text, className = "", direction = "up", d
       className={className}
       initial={initial}
       whileInView={animate}
-      viewport={{ once: true }}
+      viewport={{ once: false, amount: 0.2 }}
       transition={{
         duration: 0.8,
         delay: delay,

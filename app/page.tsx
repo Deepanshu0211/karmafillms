@@ -160,7 +160,7 @@ export default function Home() {
         <section className="section-container">
           <div className="container">
             <div className="card-box p-8 mb-16 text-center">
-              <AnimatedText text="Meet Our Team" className="text-3xl md:text-4xl font-bold" direction="up" />
+              <AnimatedText text="Meet Our Team" className="text-3xl md:text-4xl font-bold" direction="right" />
             </div>
             <div className="relative overflow-hidden">
               {/* Carousel container */}
@@ -169,7 +169,7 @@ export default function Home() {
                 id="teamCarousel"
                 ref={carouselRef}
               >
-                <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-2 px-[-10px]">
+                <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-2 px-2">
                   <div className="flex-shrink-0 w-[15rem] h-auto snap-center mx-4">
                     <TeamMember
                       name="Vivek Ahir"
@@ -184,7 +184,7 @@ export default function Home() {
                       name="Rahul Patel"
                       role="Creative Director"
                       image="/assets/rahul.png"
-                      delay={0.2}
+                      delay={0.3}
                       className="w-full h-full transition-all duration-300"
                     />
                   </div>
@@ -193,7 +193,7 @@ export default function Home() {
                       name="Deepanshu Ahir"
                       role="Developer"
                       image="/assets/kumar.png"
-                      delay={0.3}
+                      delay={0.5}
                       className="w-full h-full transition-all duration-300"
                     />
                   </div>
@@ -202,7 +202,7 @@ export default function Home() {
                       name="Yash Singh"
                       role="3D visual & Editor"
                       image="/assets/yash-singh.png"
-                      delay={0.4}
+                      delay={0.7}
                       className="w-full h-full transition-all duration-300"
                     />
                   </div>
@@ -211,7 +211,7 @@ export default function Home() {
                       name="Ehtisham Sageer"
                       role="Junior Designer"
                       image="/assets/ehtisham.png"
-                      delay={0.5}
+                      delay={0.9}
                       className="w-full h-full transition-all duration-300"
                     />
                   </div>
