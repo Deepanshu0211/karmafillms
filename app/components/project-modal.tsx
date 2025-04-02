@@ -1,57 +1,61 @@
-import { useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { X } from "lucide-react"
-import { Button } from "./ui/button"
-import ImageModal from "./ImageModal"
-import VideoModal from "./VideoModal" // Import VideoModal
+"use client";
+
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
+import { Button } from "./ui/button";
+import ImageModal from "./ImageModal";
+import VideoModal from "./VideoModal"; // Import VideoModal
 
 interface Project {
-  title: string
-  image?: string
-  file?: string
-  video?: string
+  title: string;
+  image?: string;
+  file?: string;
+  video?: string;
+  thumbnail?: string;
 }
 
 interface CategoryContent {
-  title: string
-  description: string
-  projects: Project[]
+  title: string;
+  description: string;
+  projects: Project[];
 }
 
 interface ProjectModalProps {
-  content: CategoryContent
-  onClose: () => void
+  content: CategoryContent;
+  onClose: () => void;
+  categories?: { id: string; content: CategoryContent }[]; // Fix for missing categories reference
 }
 
-export default function ProjectModal({ content, onClose }: ProjectModalProps) {
-  const [selectedFile, setSelectedFile] = useState<string | null>(null)
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null) // Video State
+export default function ProjectModal({ content, onClose, categories }: ProjectModalProps) {
+  const [selectedFile, setSelectedFile] = useState<string | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null); // Video State
 
   useEffect(() => {
-    document.body.style.overflow = "hidden"
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "auto"
-    }
-  }, [])
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         if (selectedFile) {
-          setSelectedFile(null)
+          setSelectedFile(null);
         } else if (selectedVideo) {
-          setSelectedVideo(null) // Close video modal first
+          setSelectedVideo(null); // Close video modal first
         } else {
-          onClose()
+          onClose();
         }
       }
-    }
+    };
 
-    window.addEventListener("keydown", handleEscape)
+    window.addEventListener("keydown", handleEscape);
     return () => {
-      window.removeEventListener("keydown", handleEscape)
-    }
-  }, [selectedFile, selectedVideo, onClose])
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [selectedFile, selectedVideo, onClose]);
 
   return (
     <AnimatePresence>
@@ -75,8 +79,8 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
               size="icon"
               className="absolute top-6 right-6 h-10 w-10 flex items-center justify-center rounded-full glass z-50"
               onClick={(e) => {
-                e.stopPropagation()
-                onClose()
+                e.stopPropagation();
+                onClose();
               }}
             >
               <X className="h-6 w-6" />
@@ -107,11 +111,23 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
                   {/* Video, Image, or PDF Thumbnail */}
                   <div className="relative w-full h-[180px] overflow-hidden rounded-t-xl">
                     {project.video ? (
-                      <div className="w-full h-full flex items-center justify-center text-sm 
-                      bg-white text-black dark:bg-black dark:text-white transition-colors">
-                      🎬 Click to Play Video
-                    </div>
-                    
+                      <div className="relative w-full h-full flex items-center justify-center text-sm bg-white text-black dark:bg-black dark:text-white transition-colors cursor-pointer">
+                        {/* Get a matching thumbnail from the Thumbnails category */}
+                        {categories
+                          ?.find((c) => c.id === "thumbnails")
+                          ?.content.projects[index]?.image && (
+                          <img
+                            src={categories.find((c) => c.id === "thumbnails")?.content.projects[index]?.image}
+                            alt="Video Thumbnail"
+                            className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                          />
+                        )}
+
+                        {/* Play Button Overlay */}
+                        <div className="relative z-10 bg-black/60 text-white px-4 py-2 rounded-md flex items-center gap-2">
+                          🎬 Click to Play Video
+                        </div>
+                      </div>
                     ) : project.file ? (
                       <iframe
                         src={`${project.file}#page=1&toolbar=0&navpanes=0&scrollbar=0`}
@@ -144,5 +160,5 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
       {/* Image/PDF Modal */}
       {selectedFile && <ImageModal fileUrl={selectedFile} onClose={() => setSelectedFile(null)} />}
     </AnimatePresence>
-  )
+  );
 }

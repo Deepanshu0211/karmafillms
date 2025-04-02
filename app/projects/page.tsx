@@ -4,6 +4,7 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import ProjectCategory from "../components/project-category"
 import ProjectModal from "../components/project-modal"
+import VideoModal from "../components/VideoModal";
 import AnimatedText from "../components/animated-text"
 import PageTransition from "../components/page-transition"
 import Navbar from "../components/navbar"
