@@ -1,16 +1,15 @@
-"use client"
-
 import { useEffect, useState } from "react"
-import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
 import { Button } from "./ui/button"
-import ImageModal from "./ImageModal" // Import ImageModal
+import ImageModal from "./ImageModal"
+import VideoModal from "./VideoModal" // Import VideoModal
 
 interface Project {
   title: string
   image?: string
   file?: string
+  video?: string
 }
 
 interface CategoryContent {
@@ -26,6 +25,7 @@ interface ProjectModalProps {
 
 export default function ProjectModal({ content, onClose }: ProjectModalProps) {
   const [selectedFile, setSelectedFile] = useState<string | null>(null)
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null) // Video State
 
   useEffect(() => {
     document.body.style.overflow = "hidden"
@@ -38,7 +38,9 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         if (selectedFile) {
-          setSelectedFile(null) // Close image modal first
+          setSelectedFile(null)
+        } else if (selectedVideo) {
+          setSelectedVideo(null) // Close video modal first
         } else {
           onClose()
         }
@@ -49,7 +51,7 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
     return () => {
       window.removeEventListener("keydown", handleEscape)
     }
-  }, [selectedFile, onClose])
+  }, [selectedFile, selectedVideo, onClose])
 
   return (
     <AnimatePresence>
@@ -96,23 +98,31 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)" }}
-                  onClick={() => setSelectedFile(project.file || project.image || "")}
+                  onClick={() =>
+                    project.video
+                      ? setSelectedVideo(project.video) // Open Video Modal
+                      : setSelectedFile(project.file || project.image || "")
+                  }
                 >
-                  {/* Image or PDF Thumbnail */}
+                  {/* Video, Image, or PDF Thumbnail */}
                   <div className="relative w-full h-[180px] overflow-hidden rounded-t-xl">
-                    {project.file ? (
+                    {project.video ? (
+                      <div className="w-full h-full flex items-center justify-center text-sm 
+                      bg-white text-black dark:bg-black dark:text-white transition-colors">
+                      🎬 Click to Play Video
+                    </div>
+                    
+                    ) : project.file ? (
                       <iframe
                         src={`${project.file}#page=1&toolbar=0&navpanes=0&scrollbar=0`}
                         className="w-full h-full object-cover"
                         title={project.title}
                       />
                     ) : (
-                      <Image
+                      <img
                         src={project.image || "/placeholder.svg"}
                         alt={project.title}
-                        layout="fill"
-                        objectFit="cover"
-                        className="transition-transform duration-500 group-hover:scale-110"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     )}
                   </div>
@@ -127,6 +137,9 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
           </div>
         </motion.div>
       </motion.div>
+
+      {/* Video Modal */}
+      {selectedVideo && <VideoModal videoUrl={selectedVideo} onClose={() => setSelectedVideo(null)} />}
 
       {/* Image/PDF Modal */}
       {selectedFile && <ImageModal fileUrl={selectedFile} onClose={() => setSelectedFile(null)} />}
