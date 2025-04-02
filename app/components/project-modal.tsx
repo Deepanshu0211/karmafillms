@@ -125,7 +125,7 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
                         <img
                           src={getVideoThumbnail(project.video, project.thumbnail || project.image)}
                           alt="Video Thumbnail"
-                          className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                          className="absolute inset-0 w-full h-full object-cover rounded-lg filter brightness-50 blur-sm"
                         />
 
                         {/* Play Button Overlay */}
