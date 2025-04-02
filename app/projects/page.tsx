@@ -45,8 +45,8 @@ const categories = [
         "We specialize in creating short-form videos that capture attention in seconds. Our team understands the unique requirements of platforms like TikTok, Instagram Reels, and YouTube Shorts to deliver content that resonates with your audience and drives engagement.",
       projects: [
         { title: "Product Launch Teasers", image: "/assets/s1.png", video: "/video/r1.mp4" },
-        { title: "Brand Story Series", image: "/placeholder.svg?height=400&width=600" },
-        { title: "Educational Shorts", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Brand Story Series", image: "/assets/s2.png", video: "/video/r2.mp4"},
+        { title: "Educational Shorts", image: "/assets/s3.png", video: "/video/r3.mp4" },
       ],
     },
   },
