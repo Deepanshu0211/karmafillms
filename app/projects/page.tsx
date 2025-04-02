@@ -60,9 +60,9 @@ const categories = [
       description:
         "Our long-form content tells deeper stories with cinematic quality. From documentaries to in-depth tutorials, we handle the entire production process from concept development to final delivery, ensuring a compelling narrative that keeps viewers engaged.",
       projects: [
-        { title: "Corporate Documentary", image: "/placeholder.svg?height=400&width=600" },
-        { title: "Product Feature Film", image: "/placeholder.svg?height=400&width=600" },
-        { title: "Interview Series", image: "/placeholder.svg?height=400&width=600" },
+        { title: "Corporate Documentary", image: "/assets/l1.png", video: "https://www.youtube.com/embed/OwEh6SjX_1U" },
+        { title: "Product Feature Film", image: "/assets/l2.png", video: "https://www.youtube.com/embed/nzUNuCwFKB4" },
+        { title: "Interview Series", image: "/assets/l3.png", video: "https://www.youtube.com/embed/iHH7eRWF1nM" },
       ],
     },
   },

@@ -7,22 +7,32 @@ import { Button } from "./ui/button";
 import ImageModal from "./ImageModal";
 import VideoModal from "./VideoModal";
 
-interface Project {
-  title: string;
-  image?: string;
-  file?: string;
-  video?: string;
-  thumbnail?: string;
-}
+// ✅ Keep this function only ONCE at the top
+const getVideoThumbnail = (videoUrl: string, fallbackImage?: string) => {
+  let videoId = "";
 
-interface CategoryContent {
-  title: string;
-  description: string;
-  projects: Project[];
-}
+  if (videoUrl.includes("youtube.com")) {
+    const match = videoUrl.match(/[?&]v=([^&]+)/);
+    videoId = match ? match[1] : "";
+  } else if (videoUrl.includes("youtu.be/")) {
+    videoId = videoUrl.split("youtu.be/")[1]?.split("?")[0] || "";
+  }
+
+  return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : fallbackImage || "/placeholder.svg";
+};
 
 interface ProjectModalProps {
-  content: CategoryContent;
+  content: {
+    title: string;
+    description: string;
+    projects: {
+      title: string;
+      video?: string;
+      file?: string;
+      image?: string;
+      thumbnail?: string;
+    }[];
+  };
   onClose: () => void;
 }
 
@@ -55,17 +65,6 @@ export default function ProjectModal({ content, onClose }: ProjectModalProps) {
       window.removeEventListener("keydown", handleEscape);
     };
   }, [selectedFile, selectedVideo, onClose]);
-
-  /** 🔹 Function to Get Correct Video Thumbnails */
-  const getVideoThumbnail = (videoUrl: string, fallbackImage?: string) => {
-    if (videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be")) {
-      const videoId = videoUrl.split("v=")[1]?.split("&")[0] || videoUrl.split("youtu.be/")[1];
-      return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-    } else if (videoUrl.includes("instagram.com/reel")) {
-      return "/assets/instagram-placeholder.jpg"; // Placeholder for Instagram Reel
-    }
-    return fallbackImage || "/placeholder.svg";
-  };
 
   return (
     <AnimatePresence>
