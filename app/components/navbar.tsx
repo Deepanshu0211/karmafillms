@@ -114,8 +114,8 @@ export default function Navbar() {
                     </nav>
                     <div className="mt-auto pt-8">
                       <SheetClose asChild>
-                        <Button asChild className="w-full rounded-xl text-black dark:text-white" size="lg">
-                          <Link href="/contact">Get in Touch</Link>
+                        <Button asChild className="w-full rounded-xl " size="lg">
+                          <Link href="/contact" >Get in Touch</Link>
                         </Button>
                       </SheetClose>
                     </div>
