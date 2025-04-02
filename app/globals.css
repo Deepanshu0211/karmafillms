@@ -62,16 +62,7 @@
   }
 }
 
-/* Remove the cursor hiding styles */
-.custom-cursor-active {
-  /* cursor: none !important; */
-  /* Removed to keep default cursor visible */
-}
 
-.custom-cursor-active * {
-  /* cursor: none !important; */
-  /* Removed to keep default cursor visible */
-}
 
 /* Custom cursor styles - now purely decorative */
 .custom-cursor {
