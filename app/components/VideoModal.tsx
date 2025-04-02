@@ -29,10 +29,18 @@ export default function VideoModal({ videoUrl, onClose }: VideoModalProps) {
           <X className="h-6 w-6" />
         </Button>
 
-        <video controls autoPlay className="w-full max-h-[70vh] rounded-lg">
-          <source src={videoUrl} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <video 
+            controls 
+            autoPlay 
+            className="w-full max-h-[70vh] rounded-lg"
+            controlsList="nodownload"
+            disablePictureInPicture
+            onContextMenu={(e) => e.preventDefault()} // Disable right-click
+            >
+            <source src={videoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+            </video>
+
       </motion.div>
     </motion.div>
   );
