@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { Button } from "./ui/button";
 import ImageModal from "./ImageModal";
-import VideoModal from "./VideoModal"; // Import VideoModal
+import VideoModal from "./VideoModal";
 
 interface Project {
   title: string;
@@ -24,12 +24,11 @@ interface CategoryContent {
 interface ProjectModalProps {
   content: CategoryContent;
   onClose: () => void;
-  categories?: { id: string; content: CategoryContent }[]; // Fix for missing categories reference
 }
 
-export default function ProjectModal({ content, onClose, categories }: ProjectModalProps) {
+export default function ProjectModal({ content, onClose }: ProjectModalProps) {
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null); // Video State
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -44,7 +43,7 @@ export default function ProjectModal({ content, onClose, categories }: ProjectMo
         if (selectedFile) {
           setSelectedFile(null);
         } else if (selectedVideo) {
-          setSelectedVideo(null); // Close video modal first
+          setSelectedVideo(null);
         } else {
           onClose();
         }
@@ -56,6 +55,17 @@ export default function ProjectModal({ content, onClose, categories }: ProjectMo
       window.removeEventListener("keydown", handleEscape);
     };
   }, [selectedFile, selectedVideo, onClose]);
+
+  /** 🔹 Function to Get Correct Video Thumbnails */
+  const getVideoThumbnail = (videoUrl: string, fallbackImage?: string) => {
+    if (videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be")) {
+      const videoId = videoUrl.split("v=")[1]?.split("&")[0] || videoUrl.split("youtu.be/")[1];
+      return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+    } else if (videoUrl.includes("instagram.com/reel")) {
+      return "/assets/instagram-placeholder.jpg"; // Placeholder for Instagram Reel
+    }
+    return fallbackImage || "/placeholder.svg";
+  };
 
   return (
     <AnimatePresence>
@@ -104,7 +114,7 @@ export default function ProjectModal({ content, onClose, categories }: ProjectMo
                   whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)" }}
                   onClick={() =>
                     project.video
-                      ? setSelectedVideo(project.video) // Open Video Modal
+                      ? setSelectedVideo(project.video)
                       : setSelectedFile(project.file || project.image || "")
                   }
                 >
@@ -112,20 +122,15 @@ export default function ProjectModal({ content, onClose, categories }: ProjectMo
                   <div className="relative w-full h-[180px] overflow-hidden rounded-t-xl">
                     {project.video ? (
                       <div className="relative w-full h-full flex items-center justify-center text-sm bg-white text-black dark:bg-black dark:text-white transition-colors cursor-pointer">
-                        {/* Get a matching thumbnail from the Thumbnails category */}
-                        {categories
-                          ?.find((c) => c.id === "thumbnails")
-                          ?.content.projects[index]?.image && (
-                          <img
-                            src={categories.find((c) => c.id === "thumbnails")?.content.projects[index]?.image}
-                            alt="Video Thumbnail"
-                            className="absolute inset-0 w-full h-full object-cover rounded-lg"
-                          />
-                        )}
+                        <img
+                          src={getVideoThumbnail(project.video, project.thumbnail || project.image)}
+                          alt="Video Thumbnail"
+                          className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                        />
 
                         {/* Play Button Overlay */}
                         <div className="relative z-10 bg-black/60 text-white px-4 py-2 rounded-md flex items-center gap-2">
-                          🎬 Click to Play Video
+                          ▶
                         </div>
                       </div>
                     ) : project.file ? (

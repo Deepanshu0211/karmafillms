@@ -1,15 +1,19 @@
 "use client"
 
-import { useState } from "react"
+import { lazy, useState } from "react"
 import { motion } from "framer-motion"
 import ProjectCategory from "../components/project-category"
-import ProjectModal from "../components/project-modal"
-import VideoModal from "../components/VideoModal";
+
 import AnimatedText from "../components/animated-text"
 import PageTransition from "../components/page-transition"
 import Navbar from "../components/navbar"
 import Footer from "../components/footer"
+
 // Project categories and their content
+const ProjectModal = lazy(() => import("../components/project-modal"));
+const VideoModal = lazy(() => import("../components/VideoModal"));
+
+
 const categories = [
   {
     id: "thumbnails",
@@ -40,7 +44,7 @@ const categories = [
       description:
         "We specialize in creating short-form videos that capture attention in seconds. Our team understands the unique requirements of platforms like TikTok, Instagram Reels, and YouTube Shorts to deliver content that resonates with your audience and drives engagement.",
       projects: [
-        { title: "Product Launch Teasers", image: "/assets/1.png", video: "/video/r1.mp4" },
+        { title: "Product Launch Teasers", image: "/assets/s1.png", video: "/video/r1.mp4" },
         { title: "Brand Story Series", image: "/placeholder.svg?height=400&width=600" },
         { title: "Educational Shorts", image: "/placeholder.svg?height=400&width=600" },
       ],
