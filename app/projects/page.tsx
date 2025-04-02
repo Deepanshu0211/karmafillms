@@ -11,7 +11,7 @@ import Footer from "../components/footer"
 
 // Project categories and their content
 const ProjectModal = lazy(() => import("../components/project-modal"));
-
+//changed
 
 
 const categories = [
