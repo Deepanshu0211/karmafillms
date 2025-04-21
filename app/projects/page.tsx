@@ -23,7 +23,7 @@ const categories = [
     content: {
       title: "Thumbnail Design",
       description:
-        "Our thumbnail designs are strategically crafted to maximize click-through rates while maintaining brand consistency. We combine psychology, design principles, and platform-specific optimization to create thumbnails that stand out in crowded feeds.",
+        "We design eye-catching thumbnails that boost clicks while keeping your brand on point—blending psychology, smart design, and platform hacks to stand out.",
       projects: [
         { title: "Tech Review Series", image: "/assets/t1.jpg" },
         { title: "Travel Vlog Collection", image: "/assets/t2.jpg" },
@@ -42,7 +42,7 @@ const categories = [
     content: {
       title: "Short Form Content",
       description:
-        "We specialize in creating short-form videos that capture attention in seconds. Our team understands the unique requirements of platforms like TikTok, Instagram Reels, and YouTube Shorts to deliver content that resonates with your audience and drives engagement.",
+        "We craft scroll-stopping short-form videos for Reels, and Shorts—built to hook fast, resonate deep, and drive real engagement.",
       projects: [
         { title: "Product Launch Teasers", image: "/assets/s1.png", video: "/video/r1.mp4" },
         { title: "Brand Story Series", image: "/assets/s2.png", video: "/video/r2.mp4"},
@@ -56,9 +56,9 @@ const categories = [
     description: "Immersive long-form video content and documentaries",
     image: "/assets/longform.png",
     content: {
-      title: "Long Form Production",
+      title: "Long Form Content",
       description:
-        "Our long-form content tells deeper stories with cinematic quality. From documentaries to in-depth tutorials, we handle the entire production process from concept development to final delivery, ensuring a compelling narrative that keeps viewers engaged.",
+        "We produce cinematic long-form content—from docs to deep-dive tutorials—handling everything from concept to delivery with storytelling that keeps viewers locked in.",
       projects: [
         { title: "Corporate Documentary", image: "/assets/l1.png", video: "https://www.youtube.com/embed/OwEh6SjX_1U" },
         { title: "Product Feature Film", image: "/assets/l2.png", video: "https://www.youtube.com/embed/nzUNuCwFKB4" },
@@ -74,7 +74,7 @@ const categories = [
     content: {
       title: "Poster Design",
       description:
-        "Our poster designs combine visual impact with clear messaging to effectively communicate your brand's value. Whether for digital campaigns or physical displays, we create posters that capture attention and drive action.",
+        "We design bold posters that grab attention and clearly deliver your brand’s message—perfect for both screens and streets.",
       projects: [
         { title: "Baby john poster", image: "/assets/Baby-john-poster.png?width=100&height=200" },
         { title: "pushpa-Recovered", image: "/assets/pushpa-Recovered.png" }
@@ -84,13 +84,13 @@ const categories = [
   },
   {
     id: "3d",
-    title: "3D Works",
+    title: "3D Projects",
     description: "Creative design solutions for various media",
     image: "/assets/3d.png",
     content: {
       title: "Visual Design",
       description:
-        "Our design team creates visually stunning assets that enhance your brand's presence across all touchpoints. From social media graphics to UI/UX design, we deliver cohesive visual solutions that align with your brand identity.",
+        "Our design team crafts stunning visuals that elevate your brand—from social media to UI/UX—delivering a cohesive look across all touchpoints.",
       projects: [
         { title: "Marketing Collateral", image: "/assets/a_Dark_dining_room_with_black_marble_table_and_rich_wood_finishes.webp" },
         { title: "Website Visual Design2", image: "/assets/IMG-20240804-WA0039.jpg" },
@@ -109,7 +109,7 @@ const categories = [
     content: {
       title: "Brand Guidelines",
       description:
-        "We develop comprehensive brand guidelines that ensure consistency across all platforms and touchpoints. Our brand systems include logo usage, typography, color palettes, imagery style, and voice guidelines to maintain a cohesive brand experience.",
+        "We create brand guidelines that ensure consistency across all platforms—from logos to voice—delivering a unified brand experience.",
       projects: [
         { title: "Startup Brand System", image: "/assets/pdf1.png", file: "/assets/Acrements-Brand-Guideline.pdf" },
         { title: "Brand Refresh Guidelines", image: "/placeholder.svg?height=400&width=600", file:"/assets/branding-tactics-project.pdf" },
