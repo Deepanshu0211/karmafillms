@@ -1,5 +1,5 @@
 "use client"
-
+import Link from "next/link"
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "../components/ui/button"
@@ -83,16 +83,25 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="font-medium -ml-4">Phone</h3>
-                        <p className="text-body text-xs sm:text-sm -ml-4">+91 9033912081</p>
+                        <p className="text-body text-xs sm:text-sm -ml-4">
+                          <Link href="tel:+919033912081" className="hover:text-primary">
+                            +91 9033912081
+                          </Link>
+                        </p>
                       </div>
                     </div>
+
                     <div className="flex items-start gap-4 card-box p-4">
                       <div className="glass p-3 rounded-full">
                         <Phone className="h-6 w-6 text-primary" />
                       </div>
                       <div>
                         <h3 className="font-medium -ml-4">Phone</h3>
-                        <p className="text-body text-xs sm:text-sm -ml-4">+91 8758395535</p>
+                        <p className="text-body text-xs sm:text-sm -ml-4">
+                          <Link href="tel:+918758395535" className="hover:text-primary">
+                            +91 8758395535
+                          </Link>
+                        </p>
                       </div>
                     </div>
 
