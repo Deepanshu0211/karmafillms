@@ -2,7 +2,7 @@
 
 import { Suspense, useState, useEffect } from "react";
 import { ThemeProvider } from "./components/theme-provider";
-import CustomCursor from "./components/custom-cursor";
+// import CustomCursor from "./components/custom-cursor";
 import LoadingScreen from "./components/loading-screen";
 import "./globals.css";
 
@@ -23,7 +23,7 @@ export default function RootLayoutClient({
           <Suspense fallback={<LoadingScreen />}>
             {!isLoaded ? <LoadingScreen /> : (
               <>
-                <CustomCursor />
+                
                 {children}
               </>
             )}

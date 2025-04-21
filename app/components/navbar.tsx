@@ -71,6 +71,7 @@ export default function Navbar() {
                   }`}
                 >
                   {link.label}
+                  <span className="absolute left-0 bottom-0 h-0.5 w-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left bg-current"></span>
                 </Link>
               ))}
             </nav>

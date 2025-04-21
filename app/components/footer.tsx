@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Instagram, Twitter, Youtube, Mail, Linkedin, Phone } from "lucide-react"
+import { Instagram, Facebook, Youtube, Mail, Linkedin, Phone } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -21,11 +21,11 @@ export default function Footer() {
                   <Youtube className="h-5 w-5" />
                   <span className="sr-only">Youtube</span>
                 </Link>
-                <Link href="#" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
-                  <Twitter className="h-5 w-5" />
+                <Link href="https://www.facebook.com/karmafilms7" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
+                  <Facebook className="h-5 w-5" />
                   <span className="sr-only">Twitter</span>
                 </Link>
-                <Link href="https://www.linkedin.com/company/karmafilms7/" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
+                <Link href="https://www.linkedin.com/company/karmāfilms/" className="text-body hover:text-foreground transition-colors glass p-2 rounded-full">
                   <Linkedin className="h-5 w-5" />
                   <span className="sr-only">Linkedin</span>
                 </Link>
@@ -100,17 +100,26 @@ export default function Footer() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-sm font-bold">Contact</h3>
+              <h3 className="text-sm font-bold">Need Support?</h3>
               <ul className="space-y-2 text-sm">
-                <li className="flex items-center gap-2 text-body card-box p-3">
+              <li
+                  onClick={() =>
+                    window.open(
+                      "https://mail.google.com/mail/?view=cm&fs=1&to=karmaafilms@gmail.com",
+                      "_blank",
+                      "width=600,height=700,left=100,top=100"
+                    )
+                  }
+                  className="flex items-center gap-2 text-body card-box p-3 cursor-pointer"
+                >
                   <Mail className="h-4 w-4" />
                   karmaafilms@gmail.com
                 </li>
-                <li className="flex items-center gap-2 text-body card-box p-3">
+                <li className="flex items-center gap-2 text-body card-box p-3 cursor-pointer">
                   <Phone className="h-4 w-4" />
                   +91 9033912081
                 </li>
-                <li className="flex items-center gap-2 text-body card-box p-3">
+                <li className="flex items-center gap-2 text-body card-box p-3 cursor-pointer">
                   <Phone className="h-4 w-4" />
                   +91 8758395535
                 </li>

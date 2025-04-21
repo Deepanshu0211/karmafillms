@@ -70,8 +70,10 @@ export default function ContactPage() {
                         <Mail className="h-6 w-6 text-primary" />
                       </div>
                       <div>
+                        <a  href="https://mail.google.com/mail/?view=cm&fs=1&to=karmaafilms@gmail.com&su=Subject&body=Message" target="_blank" rel="noopener noreferrer"> 
                         <h3 className="font-medium -ml-4">Email</h3>
-                        <p className="text-body text-xs sm:text-sm -ml-4">karmaafilms@gmail.com</p>
+                        <p className="text-body text-xs sm:text-sm -ml-4" >karmaafilms@gmail.com</p>
+                        </a>
                       </div>
                     </div>
 

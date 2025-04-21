@@ -41,7 +41,7 @@ export default function AboutPage() {
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   className="rounded-xl overflow-hidden"
                 >
                   <Image
@@ -87,7 +87,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)" }}
               >
                 <h3 className="text-xl font-bold mb-4">Understand</h3>
@@ -102,7 +102,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)" }}
               >
                 <h3 className="text-xl font-bold mb-4">Create</h3>
@@ -117,7 +117,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)" }}
               >
                 <h3 className="text-xl font-bold mb-4">Deliver</h3>
@@ -157,7 +157,7 @@ export default function AboutPage() {
                   initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   className="rounded-xl overflow-hidden"
                 >
                   <Image
