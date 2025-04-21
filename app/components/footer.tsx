@@ -116,12 +116,16 @@ export default function Footer() {
                   karmaafilms@gmail.com
                 </li>
                 <li className="flex items-center gap-2 text-body card-box p-3 cursor-pointer">
-                  <Phone className="h-4 w-4" />
-                  +91 9033912081
+                  <Link href="tel:+919033912081" className="flex items-center gap-2">
+                    <Phone className="h-4 w-4" />
+                    +91 9033912081
+                  </Link>
                 </li>
                 <li className="flex items-center gap-2 text-body card-box p-3 cursor-pointer">
-                  <Phone className="h-4 w-4" />
-                  +91 8758395535
+                  <Link href="tel:+918758395535" className="flex items-center gap-2">
+                    <Phone className="h-4 w-4" />
+                    +91 8758395535
+                  </Link>
                 </li>
               </ul>
             </div>
