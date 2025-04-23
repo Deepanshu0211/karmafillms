@@ -6,14 +6,14 @@ import { ArrowRight, PlayCircle } from "lucide-react";
 
 interface ProjectCategoryProps {
   title: string;
-  description: string;
+ 
   image: string;
   hasVideo?: boolean;
   onClick: () => void;
   delay?: number;
 }
 
-export default function ProjectCategory({ title, description, image, hasVideo, onClick, delay = 0 }: ProjectCategoryProps) {
+export default function ProjectCategory({ title, image, hasVideo, onClick, delay = 0 }: ProjectCategoryProps) {
   return (
     <motion.div
       className="group cursor-pointer overflow-hidden rounded-xl card-box relative"
@@ -35,7 +35,7 @@ export default function ProjectCategory({ title, description, image, hasVideo, o
       </div>
       <div className="absolute bottom-0 left-0 right-0 p-6">
         <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">{title}</h3>
-        <p className="text-white/80 mb-4">{description}</p>
+        
         <div className="flex items-center text-primary text-sm font-medium glass px-4 py-2 rounded-full w-fit">
           <span>View Projects</span>
           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

@@ -3,7 +3,7 @@ export const categories = [
     {
       id: "thumbnails",
       title: "Thumbnails",
-      description: "Eye-catching thumbnails that drive engagement",
+      
       image: "/assets/thumbnails.png",
       content: {
         title: "Thumbnail Design",
@@ -22,7 +22,7 @@ export const categories = [
     {
       id: "shortform",
       title: "Short Form",
-      description: "Engaging short-form content for social platforms",
+      
       image: "/assets/shortform.png",
       content: {
         title: "Short Form Content",
@@ -38,7 +38,7 @@ export const categories = [
     {
       id: "longform",
       title: "Long Form",
-      description: "Immersive long-form video content and documentaries",
+      
       image: "/assets/longform.png",
       content: {
         title: "Long Form Content",
@@ -54,7 +54,7 @@ export const categories = [
     {
       id: "posters",
       title: "Posters",
-      description: "Striking poster designs for marketing campaigns",
+      
       image: "/assets/posters.png",
       content: {
         title: "Poster Design",
@@ -70,7 +70,7 @@ export const categories = [
     {
       id: "3d",
       title: "3D Projects",
-      description: "Creative design solutions for various media",
+      
       image: "/assets/3d.png",
       content: {
         title: "Visual Design",
@@ -89,7 +89,7 @@ export const categories = [
     {
       id: "brandguidelines",
       title: "Brand Guidelines",
-      description: "Comprehensive brand identity systems",
+      
       image: "/assets/brand-guidelines.png",
       content: {
         title: "Brand Guidelines",
