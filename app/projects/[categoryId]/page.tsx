@@ -12,7 +12,7 @@ import { X, ChevronLeft } from "lucide-react"
 import AnimatedText from "../../components/animated-text" // Assuming AnimatedText component is reused
 import { useTheme } from "next-themes" // Import useTheme hook
 import Image from "next/image"
-import { useEffect } from "react"
+
 
 
 interface Props {
