@@ -38,19 +38,31 @@ export const categories = [
     {
       id: "longform",
       title: "Long Form",
-      
       image: "/assets/longform.png",
       content: {
         title: "Long Form Content",
         description:
           "We produce cinematic long-form content—from docs to deep-dive tutorials—handling everything from concept to delivery with storytelling that keeps viewers locked in.",
         projects: [
-          { title: "Corporate Documentary", image: "/assets/l1.png", video: "https://www.youtube.com/embed/OwEh6SjX_1U" },
-          { title: "Product Feature Film", image: "/assets/l2.png", video: "https://www.youtube.com/embed/nzUNuCwFKB4" },
-          { title: "Interview Series", image: "/assets/l3.png", video: "https://www.youtube.com/embed/iHH7eRWF1nM" },
+          { 
+            title: "Corporate Documentary", 
+            image: "/assets/l1.png", 
+            youtube: "https://www.youtube.com/watch?v=OwEh6SjX_1U" 
+          },
+          { 
+            title: "Product Feature Film", 
+            image: "/assets/l2.png", 
+            youtube: "https://www.youtube.com/watch?v=nzUNuCwFKB4" 
+          },
+          { 
+            title: "Interview Series", 
+            image: "/assets/l3.png", 
+            youtube: "https://www.youtube.com/watch?v=iHH7eRWF1nM" 
+          },
         ],
       },
     },
+    
     {
       id: "posters",
       title: "Posters",
@@ -97,8 +109,8 @@ export const categories = [
           "We create brand guidelines that ensure consistency across all platforms—from logos to voice—delivering a unified brand experience.",
         projects: [
           { title: "Startup Brand System", image: "/assets/pdf1.png", file: "/assets/Acrements-Brand-Guideline.pdf" },
-          { title: "Brand Refresh Guidelines", image: "/placeholder.svg?height=400&width=600", file:"/assets/branding-tactics-project.pdf" },
-          { title: "Multi-Platform Brand Guide", image: "/placeholder.svg?height=400&width=600", file:"/assets/ivory-nepal-pitch-deck1.pdf" },
+          { title: "Brand Refresh Guidelines", image: "/assets/pdf2.png", file:"/assets/branding-tactics-project.pdf" },
+          { title: "Multi-Platform Brand Guide", image: "/assets/pdf3.png", file:"/assets/ivory-nepal-pitch-deck1.pdf" },
         ],
       },
     },
