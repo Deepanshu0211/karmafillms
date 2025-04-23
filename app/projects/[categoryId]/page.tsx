@@ -6,28 +6,46 @@ import Navbar from "../../components/navbar"
 import Footer from "../../components/footer"
 import PageTransition from "../../components/page-transition"
 import { motion } from "framer-motion"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Dialog } from "@headlessui/react"
 import { X, ChevronLeft } from "lucide-react"
 import AnimatedText from "../../components/animated-text" // Assuming AnimatedText component is reused
 import { useTheme } from "next-themes" // Import useTheme hook
 import Image from "next/image"
 
-
+// Define types for your project
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  video?: string;
+  youtube?: string;
+  file?: string;
+  content?: {
+    title: string;
+    description: string;
+    projects: Project[];
+  };
+}
 
 interface Props {
   params: {
-    categoryId: string
-  }
+    categoryId: string;
+  };
 }
 
 export default function CategoryPage({ params }: Props) {
-  const { theme } = useTheme() // Access current theme (light or dark)
-  const category = categories.find((cat) => cat.id === params.categoryId)
-  const [selectedProject, setSelectedProject] = useState<any>(null)
-  const router = useRouter()
+  const { theme, setTheme } = useTheme(); // Access current theme (light or dark)
+  const category = categories.find((cat) => cat.id === params.categoryId);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const router = useRouter();
 
-  if (!category) return notFound()
+  // Effect to handle theme change
+  useEffect(() => {
+    setTheme(theme || "dark"); // Set the theme based on the current value or default to "light"
+  }, [setTheme, theme]);
+
+  if (!category) return notFound();
 
   return (
     <PageTransition>
@@ -72,12 +90,18 @@ export default function CategoryPage({ params }: Props) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 className="relative group bg-white/30 dark:bg-zinc-800/30 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden hover:scale-[1.03] transition-transform duration-300 cursor-pointer"
-                onClick={() => setSelectedProject(project)}
+                onClick={() => setSelectedProject({
+                  ...project,
+                  description: 'description' in project ? String(project.description) : "",
+                  content: 'content' in project && project.content ? project.content as { title: string; description: string; projects: Project[] } : { title: "", description: "", projects: [] }
+                })}
               >
                 <div className="relative">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
+                    width={500}
+                    height={300}
                     className={`w-full object-cover rounded-t-2xl ${'youtube' in project || 'video' in project || 'file' in project ? 'max-h-[350px]' : 'max-h-[250px]'}`}
                   />
                   {("video" in project || "file" in project || "youtube" in project) && (
@@ -144,14 +168,18 @@ export default function CategoryPage({ params }: Props) {
                 ) : (
                   <Image
                     src={selectedProject.file}
-                    alt={selectedProject?.title}
+                    alt={selectedProject?.title || "Project image"}
+                    width={500}
+                    height={300}
                     style={{ width: '100%', maxHeight: '500px', borderRadius: '1rem', objectFit: 'contain' }}
                   />
                 )
               ) : (
-                <img
-                  src={selectedProject?.image}
-                  alt={selectedProject?.title}
+                <Image
+                  src={selectedProject?.image || "/default-image.jpg"}
+                  alt={selectedProject?.title || "Default project title"}
+                  width={500}
+                  height={300}
                   className="w-full max-h-[500px] rounded-xl object-contain"
                 />
               )}
@@ -161,5 +189,5 @@ export default function CategoryPage({ params }: Props) {
       </main>
       <Footer />
     </PageTransition>
-  )
+  );
 }
