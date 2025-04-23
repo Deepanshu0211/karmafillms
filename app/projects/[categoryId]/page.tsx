@@ -11,6 +11,9 @@ import { Dialog } from "@headlessui/react"
 import { X, ChevronLeft } from "lucide-react"
 import AnimatedText from "../../components/animated-text" // Assuming AnimatedText component is reused
 import { useTheme } from "next-themes" // Import useTheme hook
+import Image from "next/image"
+import { useEffect } from "react"
+
 
 interface Props {
   params: {
@@ -139,10 +142,10 @@ export default function CategoryPage({ params }: Props) {
                     className="w-full h-[500px] rounded-xl"
                   />
                 ) : (
-                  <img
+                  <Image
                     src={selectedProject.file}
                     alt={selectedProject?.title}
-                    className="w-full max-h-[500px] rounded-xl object-contain"
+                    style={{ width: '100%', maxHeight: '500px', borderRadius: '1rem', objectFit: 'contain' }}
                   />
                 )
               ) : (
