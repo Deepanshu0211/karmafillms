@@ -188,15 +188,7 @@ export default function Home() {
                       className="w-full h-full transition-all duration-300"
                     />
                   </div>
-                  <div className="flex-shrink-0 w-[15rem] h-auto snap-center mx-4">
-                    <TeamMember
-                      name="Deepanshu Ahir"
-                      role="Developer"
-                      image="/assets/kumar.png"
-                      delay={0.5}
-                      className="w-full h-full transition-all duration-300"
-                    />
-                  </div>
+            
                   <div className="flex-shrink-0 w-[15rem] h-auto snap-center mx-4">
                     <TeamMember
                       name="Yash Singh"

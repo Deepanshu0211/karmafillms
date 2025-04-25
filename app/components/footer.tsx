@@ -17,7 +17,7 @@ export default function Footer() {
       <div className="container px-4 sm:px-6 lg:px-8 grid gap-8 md:gap-12">
         <div className="rounded-xl shadow-md bg-white/5 backdrop-blur-sm p-6 md:p-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
-            {/* Social/Brand */}
+            
             <div className="space-y-4">
               <h3 className="text-lg font-bold">Karmā Film</h3>
               <p className="text-sm text-body max-w-xs">
@@ -42,7 +42,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Services */}
+            
             <div className="space-y-4">
               <h3 className="text-sm font-bold">Services</h3>
               <ul className="space-y-2 text-sm">
@@ -59,7 +59,7 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Company Links */}
+          
             <div className="space-y-4">
               <h3 className="text-sm font-bold">Company</h3>
               <ul className="space-y-2 text-sm">
