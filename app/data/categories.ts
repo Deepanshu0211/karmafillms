@@ -89,12 +89,9 @@ export const categories = [
         description:
           "Our design team crafts stunning visuals that elevate your brand—from social media to UI/UX—delivering a cohesive look across all touchpoints.",
         projects: [
-          { title: "Marketing Collateral", image: "/assets/a_Dark_dining_room_with_black_marble_table_and_rich_wood_finishes.webp" },
-          { title: "Website Visual Design2", image: "/assets/IMG-20240804-WA0039.jpg" },
-          { title: "Social Media Kit", image: "/assets/1.png" },
-          { title: "Website Visual Design", image: "/assets/4-1.png" },
-          { title: "Website Visual Design2", image: "/assets/office-sofa-1.jpg" },
-          { title: "Website Visual Design2", image: "/assets/untitled.png" },
+          { title: "Marketing Collateral", image: "/assets/3d3.png", video: "/video/1.mp4" },
+          { title: "Website Visual Design2", image: "/assets/3d2.png", video: "/video/2.mp4" },
+          { title: "Website Visual Design2", image: "/assets/3d1.png", video: "/video/3.mp4" },
         ],
       },
     },
